@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
-import client from '../apollo-client';
+import client from '../client/apollo-client';
 import { ApolloQueryResult, gql } from "@apollo/client" ;
 
 
@@ -17,31 +17,37 @@ interface TRepositories {
     }
 }
 
+interface TRepoData {
+    data: {
+        getRepos : TRepositories[]
+    }
+}
+
 const GitHub :FC<TRepositories> = ({repositories}) => {
     console.log(repositories);
     return(<>GitHub Page coming soon</>);
 };
 
 export async function getStaticProps(){
-    // const { data } : ApolloQueryResult<TRepositories> = await client.query({
-    //     query: gql`
-    //         query GetRepositories {
-    //             repositories{
-    //                 id
-    //                 name
-    //                 owner {
-    //                     avatar_url
-    //                     login
-    //                 }
-    //                 url
-    //                 description
-    //             }
-    //         }
-    //     `
-    // });
+    const { data : { getRepos: repositories }  } : ApolloQueryResult<TRepoData["data"]> = await client.query({
+        query: gql`
+            query GetRepositories {
+                getRepos{
+                    id
+                    name
+                    owner {
+                        avatar_url
+                        login
+                    }
+                    url
+                    description
+                }
+            }
+        `
+    });
     return {
         props : {
-            // repositories : data.repositories
+            repositories : repositories
         }
     }
 }

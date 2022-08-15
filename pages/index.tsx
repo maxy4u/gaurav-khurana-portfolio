@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css';
 import {navigation } from '../constants';
 import Footer from "../components/Footer";
 
+
 type THome = {
   user: string;
 }
@@ -27,7 +28,6 @@ const Home: NextPage<THome> = ({user}) => {
 }
 
 export async function getStaticProps(){
-  console.log('User', process.env.user);
   return {
     props : {
       user: process.env.user,

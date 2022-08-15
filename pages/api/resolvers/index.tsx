@@ -1,6 +1,6 @@
 import axios from "axios";
-import { responsePathAsArray } from "graphql";
-import { cloneElement } from "react";
+import { ApolloQueryResult } from "@apollo/client" ;
+
 
 interface TRepositories {
     id: number;
@@ -24,8 +24,9 @@ export const resolvers = {
     Query: {
         getRepos : async () => {
             try{
-                const repos : TRepositories[] = await axios.get("https://api.github.com/users/maxy4u/repos");
-                return repos.map(({
+                const { data } : ApolloQueryResult<TRepositories[]> = await axios.get("https://api.github.com/users/maxy4u/repos");
+                console.log('Repos, ', data);
+                return data.map(({
                     id, name, owner, url, description
                 })=>({
                     id,
@@ -62,7 +63,6 @@ export const resolvers = {
         },
         getUser: async (_, {name}:{name: string})  => {
             debugger;
-            console.log('getUser called', name);
             try {
                 const user = await axios.get(
                   `https://api.github.com/users/${name}`
