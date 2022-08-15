@@ -1,0 +1,20 @@
+.header{
+    @apply font-sans text-white bg-black;
+}
+
+.header section{
+    @apply flex justify-between items-center font-serif text-gray-200 pl-meas2;
+}
+
+.header section > h1{
+    @apply text-lg font-semibold;
+}
+
+.logo{
+    @apply flex items-center;
+}
+
+.logo svg {
+    @apply h-[100px] w-[100px];
+
+}

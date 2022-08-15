@@ -1,0 +1,7 @@
+.navigation{
+    @apply list-none font-sans text-right m-0 text-lg text-gray-200;
+}
+
+.navigation > li {
+    @apply inline-block p-meas7;
+}
