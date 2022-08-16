@@ -1,13 +1,8 @@
 .container {
-  @apply bg-black;
-  background-image: url('/images/gauravkhurana.jpg');
-  background-size: contain;
-  background-position: bottom right;
-  background-repeat: no-repeat;
+  @apply flex-1 bg-transparent  text-white;
 }
 
 .main {
-  min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -16,15 +11,15 @@
   align-items: center;
 }
 
-.welcome{
-  @apply font-mono text-white;
+.welcome {
+  @apply font-mono;
 }
 
-.welcome h1{
+.welcome h1 {
   @apply text-5xl;
 }
 
-.welcome h2{
+.welcome h2 {
   @apply text-3xl;
 }
 

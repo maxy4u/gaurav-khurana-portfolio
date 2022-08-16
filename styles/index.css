@@ -1,11 +1,11 @@
-a.yellow{
-    @apply decoration-yellow-50 text-3xl font-bold text-red-200;
+a.yellow {
+  @apply decoration-yellow-50 text-3xl font-bold text-red-200;
 }
 
 .card {
-    @apply m-meas7 p-meas9 text-left text-gray-500 no-underline border-2 border-rose-600 rounded-lg max-w-[300px];
+  @apply m-meas7 p-meas9 text-left text-gray-500 no-underline border-2 border-rose-600 rounded-lg max-w-[300px];
 
-    /* margin: 1rem;
+  /* margin: 1rem;
   padding: 1.5rem;
   text-align: left;
   color: inherit;

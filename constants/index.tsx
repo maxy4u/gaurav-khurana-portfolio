@@ -1,15 +1,18 @@
-export type Tnavigation = {
-    home: string;
-    github: string;
-    portfolio: string;
-    resume: string;
-    contact: string;
+export interface TPath {
+  label: string;
+  path: string;
 }
 
-export const navigation: Tnavigation = {
-    home: 'Home',
-    github: 'GitHub',
-    portfolio: 'Portfolio',
-    resume: 'Resume',
-    contact: 'Contact'
-}
+export type Tnavigation<TObj> = {
+  home: TObj;
+  github: TObj;
+  portfolio: TObj;
+  resume: TObj;
+};
+
+export const navigation: Tnavigation<TPath> = {
+  home: { label: 'Home', path: '/' },
+  github: { label: 'GitHub', path: '/github' },
+  portfolio: { label: 'Portfolio', path: '/portfolio' },
+  resume: { label: 'Resume', path: '/resume' },
+};

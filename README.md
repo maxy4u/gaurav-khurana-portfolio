@@ -1,7 +1,6 @@
-
 # gaurav-khurana-portfolio
-Gaurav Khurana portfolio with NextJs, GraphQL, ReactJs, CSS, HTML, Tailwind, Javascript
 
+Gaurav Khurana portfolio with NextJs, GraphQL, ReactJs, CSS, HTML, Tailwind, Javascript
 
 ## Getting Started
 
@@ -26,5 +25,3 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 Information coming soon
 
 ## Deploy on Vercel
-
-
