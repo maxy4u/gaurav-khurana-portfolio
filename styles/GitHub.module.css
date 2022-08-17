@@ -1,0 +1,17 @@
+.gitCont{
+ @apply font-sans font-thin  text-white p-meas11 flex flex-col mt-meas7;  
+}
+
+.h2{
+    @apply text-2xl my-meas5 font-serif;
+}
+.repos {
+    @apply list-none;
+}
+.list{
+    @apply py-meas4 table ;
+}
+
+.list:hover {
+    @apply text-slate-200 ;
+}

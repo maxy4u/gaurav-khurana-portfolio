@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ApolloQueryResult } from '@apollo/client';
 
-interface TRepositories {
+export interface TRepositories {
   id: number;
   name: string;
   owner: {
@@ -33,7 +33,7 @@ export const resolvers = {
             login: owner.login,
             avatar_url: owner.avatar_url,
           },
-          url,
+          url: url.replace(/(api\.|repos\/)/g,""),
           description,
         }));
       } catch (e) {

@@ -1,20 +1,13 @@
-import { memo, FC } from 'react';
+import { memo, FC, useState, useCallback, useMemo } from 'react';
 import client from '../client/apollo-client';
 import { ApolloQueryResult, gql } from '@apollo/client';
-import { Layout } from '../components';
-import styles from '../styles/Home.module.css';
+import { Layout, SearchBox } from '../components';
+import stylesHome from '../styles/Home.module.css';
+import { TRepositories } from "./api/resolvers";
+import styles from "../styles/GitHub.module.css";
 
-interface TRepositories {
-  repositories: {
-    id: number;
-    name: string;
-    owner: {
-      avatar_url: string;
-      login: string;
-    };
-    url: string;
-    description: string;
-  };
+interface TRepos {
+  repositories: Array<TRepositories>
 }
 
 interface TRepoData {
@@ -23,14 +16,31 @@ interface TRepoData {
   };
 }
 
-interface TGitHub extends TRepositories {
+interface TGitHub extends TRepos {
   user: string;
 }
 
 const GitHub: FC<TGitHub> = ({ repositories, user }) => {
+  const [query, setQuery]  = useState<string | null>(null);
+  const onSearch = useCallback((value: string) => {
+    console.log(value);
+    setQuery(value);
+  }, []);
+  const regexp = useMemo(()=>(new RegExp(`${query}`,'gi')),[query]) ;
+  const serchResult = query && repositories.filter(({name})=>regexp.test(name));
+
   return (
     <Layout {...{ user }}>
-      <div className={styles.container}>GitHub Page coming soon</div>
+      <section className={`${stylesHome.container} ${styles.gitCont}`}>
+      <SearchBox onSearch={onSearch} placeholder="Search repos ..."/>
+        <h2 className={styles.h2}>List of Repositories</h2>
+        <ul className={styles.repos}>
+          {(serchResult || repositories).map(({id, description, name, url})=>(
+          <li key={id} className={styles.list}>
+            <a href={url} title={description} target="_blank">{name}</a>
+          </li>))}
+        </ul>
+      </section>
     </Layout>
   );
 };

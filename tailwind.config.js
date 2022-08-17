@@ -104,6 +104,9 @@ module.exports = {
       '2xl': '1536px',
     },
     extend: {
+      colors: {
+        'regal-blue': '#243c5a',
+      },
       spacing: {
         meas0: '0',
         meas1: '0.125rem',

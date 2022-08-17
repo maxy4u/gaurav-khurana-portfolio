@@ -3,7 +3,7 @@ import Head from 'next/head';
 import styles from '../styles/Header.module.css';
 import { Tnavigation, TPath } from '../constants';
 import TopNav from './TopNav';
-import Logo from './Logo';
+import { Logo } from '../icons';
 
 export type THeader = {
   navigation: Tnavigation<TPath>;

@@ -1,0 +1,27 @@
+.cnSearchBox {
+    display: flex;
+    width: 400px;
+    justify-content: start;
+    
+}
+
+
+.cnSearchBoxInput {
+    @apply w-[60%] p-meas4 text-black pr-meas7 caret-regal-blue;
+}
+
+.cnSearchBoxInput:focus {
+    @apply outline-none;
+}
+  
+.cnSearchBoxIcon {
+    @apply flex items-center justify-center w-[48px] h-[48px] bg-red-400 rounded-sm ml-meas5;
+}
+
+.deleteIconCont{
+    @apply inline-flex w-full items-center;
+}
+
+.deleteIcon{
+    @apply text-white bg-gray-400 rounded-2xl w-meas7 h-meas7 block ml-[-18px] text-center leading-3 cursor-pointer;
+}
