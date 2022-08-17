@@ -1,4 +1,4 @@
-import { FC, memo, KeyboardEventHandler, useCallback, useRef, KeyboardEvent } from "react";
+import { FC, memo, KeyboardEventHandler, useCallback, useRef, KeyboardEvent, MouseEventHandler, MouseEvent } from "react";
 import { SvgSearch } from "../icons" ;
 import styles from "../styles/SearchBox.module.css";
 
@@ -14,12 +14,14 @@ const SearchBox: FC<SearchBoxProps> = memo(({ onSearch, placeholder }) => {
         onSearch(inputRef.current.value);
     }
     },[onSearch, inputRef]);
-  const onClick = useCallback(() => {
+
+  const onClick : MouseEventHandler<HTMLDivElement> = useCallback(() => {
     if (inputRef?.current) {
       onSearch(inputRef.current.value);
     }
   }, [onSearch, inputRef]);
-  const onClear = useCallback(()=>{ 
+
+  const onClear: MouseEventHandler<HTMLSpanElement> = useCallback((e: MouseEvent)=>{ 
     if (inputRef?.current) {
         inputRef.current.value = "" ;
         onSearch(inputRef.current.value);

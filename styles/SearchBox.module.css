@@ -8,10 +8,13 @@
 
 .cnSearchBoxInput {
     @apply w-[60%] p-meas4 text-black pr-meas7 caret-regal-blue;
+    transition: width .5s ease;
+    transition-delay: 0.1s;
 }
 
 .cnSearchBoxInput:focus {
-    @apply outline-none;
+    @apply outline-none w-[80%];
+    transition: width .5s ease;
 }
   
 .cnSearchBoxIcon {
