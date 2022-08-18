@@ -15,5 +15,5 @@
 }
 
 .logo svg {
-  @apply h-[100px] w-[100px];
+  @apply h-[80px] w-[80px];
 }

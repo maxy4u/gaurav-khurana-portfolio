@@ -3,5 +3,9 @@
 }
 
 .navigation > li {
-  @apply inline-block p-meas7;
+  @apply inline-block p-meas7 border-b-2 border-b-transparent;
+}
+
+.navigation > li:hover {
+  @apply text-gray-300 border-b-2 border-b-gray-300;
 }

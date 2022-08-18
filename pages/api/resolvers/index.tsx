@@ -24,7 +24,7 @@ export const resolvers = {
     getRepos: async () => {
       try {
         const { data }: ApolloQueryResult<TRepositories[]> = await axios.get(
-          'https://api.github.com/users/maxy4u/repos'
+          'https://api.github.com/users/maxy4u/repos?per_page=100'
         );
         return data.map(({ id, name, owner, url, description }) => ({
           id,

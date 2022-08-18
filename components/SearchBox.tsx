@@ -26,7 +26,7 @@ const SearchBox: FC<SearchBoxProps> = memo(({ onSearch, placeholder }) => {
         inputRef.current.value = "" ;
         onSearch(inputRef.current.value);
       }
-},[inputRef])
+    },[onSearch, inputRef]);
 
 
   return (
