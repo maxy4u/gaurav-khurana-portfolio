@@ -27,24 +27,21 @@ const GitHub: FC<TGitHub> = ({ repositories, user }) => {
     setQuery(value);
   }, []);
   const regexp = useMemo(() => new RegExp(`${query}`, 'gi'), [query]);
-  const serchResult =
-    query && repositories.filter(({ name }) => regexp.test(name));
+  const serchResult = query && repositories.filter(({ name }) => regexp.test(name));
 
   return (
     <Layout {...{ user }}>
       <section className={`${stylesHome.container} ${styles.gitCont}`}>
-        <SearchBox onSearch={onSearch} placeholder="Search repos ..." />
+        <SearchBox onSearch={onSearch} placeholder='Search repos ...' />
         <h2 className={styles.h2}>List of Repositories</h2>
         <ul className={styles.repos}>
-          {(serchResult || repositories).map(
-            ({ id, description, name, url }) => (
-              <li key={id} className={styles.list}>
-                <a href={url} title={description} target="_blank">
-                  {name}
-                </a>
-              </li>
-            )
-          )}
+          {(serchResult || repositories).map(({ id, description, name, url }) => (
+            <li key={id} className={styles.list}>
+              <a href={url} title={description} target='_blank' rel='noreferrer'>
+                {name}
+              </a>
+            </li>
+          ))}
         </ul>
       </section>
     </Layout>
@@ -53,7 +50,7 @@ const GitHub: FC<TGitHub> = ({ repositories, user }) => {
 
 export async function getStaticProps() {
   const {
-    data: { getRepos: repositories },
+    data: { getRepos: repositories }
   }: ApolloQueryResult<TRepoData['data']> = await client.query({
     query: gql`
       query GetRepositories {
@@ -68,13 +65,13 @@ export async function getStaticProps() {
           description
         }
       }
-    `,
+    `
   });
   return {
     props: {
       repositories: repositories,
-      user: process.env.user,
-    },
+      user: process.env.user
+    }
   };
 }
 

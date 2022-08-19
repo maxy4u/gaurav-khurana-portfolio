@@ -39,17 +39,12 @@ function Card({ src, index, current, handleCardClick, headline }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="slide__image-wrapper">
-        <img
-          className="slide__image"
-          alt={headline}
-          src={src}
-          onLoad={imageLoaded}
-        />
+      <div className='slide__image-wrapper'>
+        <img className='slide__image' alt={headline} src={src} onLoad={imageLoaded} />
       </div>
 
-      <article className="slide__content">
-        <h2 className="slide__headline">{headline}</h2>
+      <article className='slide__content'>
+        <h2 className='slide__headline'>{headline}</h2>
       </article>
     </li>
   );
@@ -62,8 +57,8 @@ function Card({ src, index, current, handleCardClick, headline }) {
 const CardControl = ({ type, title, handleClick }) => {
   return (
     <button className={`btn btn--${type}`} title={title} onClick={handleClick}>
-      <svg className="icon" viewBox="0 0 24 24">
-        <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+      <svg className='icon' viewBox='0 0 24 24'>
+        <path d='M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z' />
       </svg>
     </button>
   );
@@ -76,7 +71,7 @@ const Carousel = ({ cards }) => {
   const [current, setCurrent] = useState(0);
   const wrapperTransform = useMemo(
     () => ({
-      transform: `translateX(-${current * (100 / cards.length)}%)`,
+      transform: `translateX(-${current * (100 / cards.length)}%)`
     }),
     [current]
   );
@@ -98,32 +93,17 @@ const Carousel = ({ cards }) => {
   );
 
   return (
-    <div className="slider">
-      <ul className="slider__wrapper" style={wrapperTransform}>
+    <div className='slider'>
+      <ul className='slider__wrapper' style={wrapperTransform}>
         {cards.map((card) => {
-          return (
-            <Card
-              key={card.index}
-              current={current}
-              handleCardClick={handleCardClick}
-              {...card}
-            />
-          );
+          return <Card key={card.index} current={current} handleCardClick={handleCardClick} {...card} />;
         })}
       </ul>
 
-      <div className="slider__controls">
-        <CardControl
-          type="previous"
-          title="Go to previous slide"
-          handleClick={handlePrevClick}
-        />
+      <div className='slider__controls'>
+        <CardControl type='previous' title='Go to previous slide' handleClick={handlePrevClick} />
 
-        <CardControl
-          type="next"
-          title="Go to next slide"
-          handleClick={handleNextClick}
-        />
+        <CardControl type='next' title='Go to next slide' handleClick={handleNextClick} />
       </div>
     </div>
   );

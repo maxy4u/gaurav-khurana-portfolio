@@ -1,111 +1,108 @@
-const { url } = require('inspector');
+const { url } = require('inspector')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     backgroundImage: {
-      hero: "url('/images/gauravkhurana.jpg')",
+      hero: "url('/images/gauravkhurana.jpg')"
     },
     fontSize: {
       xs: [
         '.75rem',
         {
           lineHeight: '0.15',
-          letterSpacing: '-0.01em',
-        },
+          letterSpacing: '-0.01em'
+        }
       ],
       sm: [
         '.875rem',
         {
           lineHeight: '0.15',
-          letterSpacing: '-0.01em',
-        },
+          letterSpacing: '-0.01em'
+        }
       ],
       tiny: [
         '.875rem',
         {
           lineHeight: '0.25',
-          letterSpacing: '-0.01em',
-        },
+          letterSpacing: '-0.01em'
+        }
       ],
       base: [
         '1rem',
         {
           lineHeight: '0.25',
-          letterSpacing: '-0.01em',
-        },
+          letterSpacing: '-0.01em'
+        }
       ],
       lg: [
         '1.125rem',
         {
           lineHeight: '0.5',
-          letterSpacing: '0.01em',
-        },
+          letterSpacing: '0.01em'
+        }
       ],
       xl: [
         '1.25rem',
         {
           lineHeight: '0.25',
-          letterSpacing: '0.01em',
-        },
+          letterSpacing: '0.01em'
+        }
       ],
       '2xl': [
         '1.5rem',
         {
           lineHeight: '0.75',
-          letterSpacing: '0.01em',
-        },
+          letterSpacing: '0.01em'
+        }
       ],
       '3xl': [
         '1.875rem',
         {
           lineHeight: '0.85',
-          letterSpacing: '0.01em',
-        },
+          letterSpacing: '0.01em'
+        }
       ],
       '4xl': [
         '2.25rem',
         {
           lineHeight: '1',
-          letterSpacing: '0.02em',
-        },
+          letterSpacing: '0.02em'
+        }
       ],
       '5xl': [
         '3rem',
         {
           lineHeight: '1.25',
-          letterSpacing: '0.03em',
-        },
+          letterSpacing: '0.03em'
+        }
       ],
       '6xl': [
         '4rem',
         {
           lineHeight: '1.5',
-          letterSpacing: '0.03em',
-        },
+          letterSpacing: '0.03em'
+        }
       ],
       '7xl': [
         '5rem',
         {
           lineHeight: '1.75',
-          letterSpacing: '0.04em',
-        },
-      ],
+          letterSpacing: '0.04em'
+        }
+      ]
     },
     screens: {
       sm: '640px',
       md: '768px',
       lg: '1024px',
       xl: '1280px',
-      '2xl': '1536px',
+      '2xl': '1536px'
     },
     extend: {
       colors: {
-        'regal-blue': '#243c5a',
+        'regal-blue': '#243c5a'
       },
       spacing: {
         meas0: '0',
@@ -132,12 +129,12 @@ module.exports = {
         meas20: '7rem',
         meas21: '8rem',
         meas22: '9rem',
-        meas23: '10rem',
+        meas23: '10rem'
       },
       borderRadius: {
-        '4xl': '2rem',
-      },
-    },
+        '4xl': '2rem'
+      }
+    }
   },
-  plugins: [],
-};
+  plugins: []
+}

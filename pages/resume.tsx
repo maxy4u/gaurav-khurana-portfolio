@@ -19,8 +19,8 @@ export function getStaticProps() {
 
   return {
     props: {
-      user,
-    },
+      user
+    }
   };
 }
 

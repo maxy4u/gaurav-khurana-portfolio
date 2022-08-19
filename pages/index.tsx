@@ -27,8 +27,8 @@ const Home: NextPage<THome> = ({ user }): JSX.Element => {
 export async function getStaticProps() {
   return {
     props: {
-      user: process.env.user,
-    },
+      user: process.env.user
+    }
   };
 }
 

@@ -140,11 +140,7 @@ h3 {
 }
 @media (hover: hover) {
   .slide--current:hover .slide__image-wrapper {
-    transform: scale(1.025)
-      translate(
-        calc(var(--x) / var(--d) * 1px),
-        calc(var(--y) / var(--d) * 1px)
-      );
+    transform: scale(1.025) translate(calc(var(--x) / var(--d) * 1px), calc(var(--y) / var(--d) * 1px));
   }
 }
 
@@ -164,8 +160,7 @@ h3 {
   object-fit: cover;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--base-duration) var(--base-ease),
-    transform var(--base-duration) var(--base-ease);
+  transition: opacity var(--base-duration) var(--base-ease), transform var(--base-duration) var(--base-ease);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -174,10 +169,7 @@ h3 {
 }
 @media (hover: hover) {
   .slide--current .slide__image {
-    transform: translate(
-      calc(var(--x) / var(--d) * 1px),
-      calc(var(--y) / var(--d) * 1px)
-    );
+    transform: translate(calc(var(--x) / var(--d) * 1px), calc(var(--y) / var(--d) * 1px));
   }
 }
 
@@ -192,17 +184,13 @@ h3 {
   visibility: hidden;
 }
 .slide--current .slide__content {
-  -webkit-animation: fade-in calc(var(--content-duration) / 2) var(--base-ease)
-    forwards;
+  -webkit-animation: fade-in calc(var(--content-duration) / 2) var(--base-ease) forwards;
   animation: fade-in calc(var(--content-duration) / 2) var(--base-ease) forwards;
   visibility: visible;
 }
 @media (hover: hover) {
   .slide--current .slide__content {
-    transform: translate(
-      calc(var(--x) / var(--d) * -1px),
-      calc(var(--y) / var(--d) * -1px)
-    );
+    transform: translate(calc(var(--x) / var(--d) * -1px), calc(var(--y) / var(--d) * -1px));
   }
 }
 .slide__content > * + * {

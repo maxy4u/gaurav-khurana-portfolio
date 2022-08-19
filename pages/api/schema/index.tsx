@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-micro';
+import { gql } from 'apollo-server-micro'
 
 export const typeDefs = gql(`
     type  User {
@@ -23,4 +23,4 @@ export const typeDefs = gql(`
         getRepos : [Repository]
         getUser(name: String): User!
     }
-`);
+`)

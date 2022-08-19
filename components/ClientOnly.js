@@ -12,7 +12,7 @@ export default function ClientOnly({ children, ...props }) {
   }
 
   return (
-    <div className="clientOnly" {...props}>
+    <div className='clientOnly' {...props}>
       {children}
     </div>
   );

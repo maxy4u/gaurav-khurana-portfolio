@@ -10,22 +10,21 @@ export type THeader = {
   user: string;
 };
 
-const Header: FC<THeader> = ({ navigation, user }) => {
-  return (
-    <header className={styles.header}>
-      <Head>
-        <title>{`${user} Portfolio`}</title>
-      </Head>
-      <section>
-        <aside className={styles.logo}>
-          <a href="/" title="Gaurav Khurana portfolio">
-            <Logo />
-          </a>
-          <h1>{user}</h1>
-        </aside>
-        <TopNav {...{ navigation, user }} />
-      </section>
-    </header>
-  );
-};
+const Header: FC<THeader> = ({ navigation, user }) => (
+  <header className={styles.header}>
+    <Head>
+      <title>{`${user} Portfolio`}</title>
+    </Head>
+    <section>
+      <aside className={styles.logo}>
+        <a href='/' title='Gaurav Khurana portfolio'>
+          <Logo />
+        </a>
+        <h1>{user}</h1>
+      </aside>
+
+      <TopNav {...{ navigation, user }} />
+    </section>
+  </header>
+);
 export default memo(Header);

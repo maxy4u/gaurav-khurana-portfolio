@@ -1,23 +1,23 @@
-import axios from 'axios';
-import { ApolloQueryResult } from '@apollo/client';
+import axios from 'axios'
+import { ApolloQueryResult } from '@apollo/client'
 
 export interface TRepositories {
-  id: number;
-  name: string;
+  id: number
+  name: string
   owner: {
-    avatar_url: string;
-    login: string;
-  };
-  url: string;
-  description: string;
+    avatar_url: string
+    login: string
+  }
+  url: string
+  description: string
 }
 
 type User = {
-  id: number;
-  login: string;
-  avatar_url: string;
-  url: string;
-};
+  id: number
+  login: string
+  avatar_url: string
+  url: string
+}
 
 export const resolvers = {
   Query: {
@@ -25,55 +25,53 @@ export const resolvers = {
       try {
         const { data }: ApolloQueryResult<TRepositories[]> = await axios.get(
           'https://api.github.com/users/maxy4u/repos?per_page=100'
-        );
+        )
         return data.map(({ id, name, owner, url, description }) => ({
           id,
           name,
           owner: {
             login: owner.login,
-            avatar_url: owner.avatar_url,
+            avatar_url: owner.avatar_url
           },
           url: url.replace(/(api\.|repos\/)/g, ''),
-          description,
-        }));
+          description
+        }))
       } catch (e) {
-        throw e;
+        throw e
       }
     },
     getRepo: async (id: number) => {
       try {
-        const repos: TRepositories[] = await axios.get(
-          'https://api.github.com/users/maxy4u/repos'
-        );
+        const repos: TRepositories[] = await axios.get('https://api.github.com/users/maxy4u/repos')
         return repos
           .map(({ id, name, owner, url, description }) => ({
             id,
             name,
             owner: {
               login: owner.login,
-              avatar_url: owner.avatar_url,
+              avatar_url: owner.avatar_url
             },
             url,
-            description,
+            description
           }))
-          .filter((repo) => repo.id === id);
+          .filter((repo) => repo.id === id)
       } catch (e) {
-        throw e;
+        throw e
       }
     },
     getUser: async (_, { name }: { name: string }) => {
-      debugger;
+      debugger
       try {
-        const user = await axios.get(`https://api.github.com/users/${name}`);
+        const user = await axios.get(`https://api.github.com/users/${name}`)
         return {
           id: user.data.id,
           login: user.data.login,
           avatar_url: user.data.avatar_url,
-          url: user.data.url,
-        };
+          url: user.data.url
+        }
       } catch (error) {
-        throw error;
+        throw error
       }
-    },
-  },
-};
+    }
+  }
+}
