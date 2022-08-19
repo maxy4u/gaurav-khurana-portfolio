@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function ClientOnly({ children, ...props }) {
   const [hasMounted, setHasMounted] = useState(false);
@@ -11,5 +11,9 @@ export default function ClientOnly({ children, ...props }) {
     return null;
   }
 
-  return <div className="clientOnly" {...props}>{children}</div>;
+  return (
+    <div className="clientOnly" {...props}>
+      {children}
+    </div>
+  );
 }

@@ -1,17 +1,16 @@
-import { FC, memo } from "react";
+import { FC, memo } from 'react';
 
 export type SvgProps = {
-    height?: string;
-    width?: string;
-    color?: string;
-    className?: string;
-  };
-  
-export const svgDefaultProps = {
-    className: "icon",
-    color: "currentColor"
+  height?: string;
+  width?: string;
+  color?: string;
+  className?: string;
 };
-  
+
+export const svgDefaultProps = {
+  className: 'icon',
+  color: 'currentColor',
+};
 
 const SvgSearch: FC<SvgProps> = (props) => {
   return (

@@ -1,41 +1,63 @@
-import { FC, memo, KeyboardEventHandler, useCallback, useRef, KeyboardEvent, MouseEventHandler, MouseEvent } from "react";
-import { SvgSearch } from "../icons" ;
-import styles from "../styles/SearchBox.module.css";
+import {
+  FC,
+  memo,
+  KeyboardEventHandler,
+  useCallback,
+  useRef,
+  KeyboardEvent,
+  MouseEventHandler,
+  MouseEvent,
+} from 'react';
+import { SvgSearch } from '../icons';
+import styles from '../styles/SearchBox.module.css';
 
 export type SearchBoxProps = {
-  onSearch: (val: string)=>void;
+  onSearch: (val: string) => void;
   placeholder?: string;
 };
 
 const SearchBox: FC<SearchBoxProps> = memo(({ onSearch, placeholder }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const onKeyPress: KeyboardEventHandler<HTMLInputElement> = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
-    if(e.key === "Enter" && inputRef?.current){
+  const onKeyPress: KeyboardEventHandler<HTMLInputElement> = useCallback(
+    (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter' && inputRef?.current) {
         onSearch(inputRef.current.value);
-    }
-    },[onSearch, inputRef]);
+      }
+    },
+    [onSearch, inputRef]
+  );
 
-  const onClick : MouseEventHandler<HTMLDivElement> = useCallback(() => {
+  const onClick: MouseEventHandler<HTMLDivElement> = useCallback(() => {
     if (inputRef?.current) {
       onSearch(inputRef.current.value);
     }
   }, [onSearch, inputRef]);
 
-  const onClear: MouseEventHandler<HTMLSpanElement> = useCallback((e: MouseEvent)=>{ 
-    if (inputRef?.current) {
-        inputRef.current.value = "" ;
+  const onClear: MouseEventHandler<HTMLSpanElement> = useCallback(
+    (e: MouseEvent) => {
+      if (inputRef?.current) {
+        inputRef.current.value = '';
         onSearch(inputRef.current.value);
       }
-    },[onSearch, inputRef]);
-
+    },
+    [onSearch, inputRef]
+  );
 
   return (
     <div className={styles.cnSearchBox}>
       <div className={styles.deleteIconCont}>
-        <input type="text" className={styles.cnSearchBoxInput} ref={inputRef} onKeyPress={onKeyPress} placeholder={placeholder} />
-        <span className={styles.deleteIcon} onClick={onClear}>x</span>
+        <input
+          type="text"
+          className={styles.cnSearchBoxInput}
+          ref={inputRef}
+          onKeyPress={onKeyPress}
+          placeholder={placeholder}
+        />
+        <span className={styles.deleteIcon} onClick={onClear}>
+          x
+        </span>
         <div className={styles.cnSearchBoxIcon} {...{ onClick }}>
-            <SvgSearch color="#FFFFFF" />
+          <SvgSearch color="#FFFFFF" />
         </div>
       </div>
     </div>

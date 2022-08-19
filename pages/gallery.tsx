@@ -1,21 +1,19 @@
 import { memo, FC } from 'react';
 import { Layout, Carousel, ClientOnly } from '../components';
 import stylesHome from '../styles/Home.module.css';
-import { cards } from "../constants";
-
+import { cards } from '../constants';
 
 export type TGallery = {
   user: string;
 };
 
-
 const Gallery: FC<TGallery> = ({ user }) => {
   return (
     <Layout {...{ user }}>
       <section className={`${stylesHome.container}`}>
-      <ClientOnly>
-        <Carousel {...{ cards }} />
-      </ClientOnly>
+        <ClientOnly>
+          <Carousel {...{ cards }} />
+        </ClientOnly>
       </section>
     </Layout>
   );

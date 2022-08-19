@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState, useCallback, useMemo } from "react";
+import React, { memo, useRef, useState, useCallback, useMemo } from 'react';
 
 //-----------------------------
 // Card Component
@@ -9,13 +9,13 @@ function Card({ src, index, current, handleCardClick, headline }) {
   const handleMouseMove = useCallback((e) => {
     const el = cardRef.current;
     const r = el.getBoundingClientRect();
-    el.style.setProperty("--x", e.clientX - (r.left + Math.floor(r.width / 2)));
-    el.style.setProperty("--y", e.clientY - (r.top + Math.floor(r.height / 2)));
+    el.style.setProperty('--x', e.clientX - (r.left + Math.floor(r.width / 2)));
+    el.style.setProperty('--y', e.clientY - (r.top + Math.floor(r.height / 2)));
   }, []);
   const handleMouseLeave = useCallback((e) => {
     const el = cardRef.current;
-    el.style.setProperty("--x", 0);
-    el.style.setProperty("--y", 0);
+    el.style.setProperty('--x', 0);
+    el.style.setProperty('--y', 0);
   }, []);
   const handleCardClickClb = useCallback((e) => {
     handleCardClick(index);
@@ -25,11 +25,11 @@ function Card({ src, index, current, handleCardClick, headline }) {
     event.target.style.opacity = 1;
   };
 
-  let classNames = "slide";
+  let classNames = 'slide';
 
-  if (current === index) classNames += " slide--current";
-  else if (current - 1 === index) classNames += " slide--previous";
-  else if (current + 1 === index) classNames += " slide--next";
+  if (current === index) classNames += ' slide--current';
+  else if (current - 1 === index) classNames += ' slide--previous';
+  else if (current + 1 === index) classNames += ' slide--next';
 
   return (
     <li
@@ -76,7 +76,7 @@ const Carousel = ({ cards }) => {
   const [current, setCurrent] = useState(0);
   const wrapperTransform = useMemo(
     () => ({
-      transform: `translateX(-${current * (100 / cards.length)}%)`
+      transform: `translateX(-${current * (100 / cards.length)}%)`,
     }),
     [current]
   );

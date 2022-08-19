@@ -7,5 +7,9 @@
 }
 
 .navigation > li:hover {
+  @apply text-gray-300;
+}
+
+.navigation > li.active {
   @apply text-gray-300 border-b-2 border-b-gray-300;
 }

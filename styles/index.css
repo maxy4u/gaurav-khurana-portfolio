@@ -16,7 +16,7 @@ a.yellow {
   max-width: 300px; */
 }
 
-.clientOnly{
+.clientOnly {
   overflow-x: hidden;
   height: 100%;
 }

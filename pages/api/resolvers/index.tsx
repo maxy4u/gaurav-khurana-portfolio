@@ -33,7 +33,7 @@ export const resolvers = {
             login: owner.login,
             avatar_url: owner.avatar_url,
           },
-          url: url.replace(/(api\.|repos\/)/g,""),
+          url: url.replace(/(api\.|repos\/)/g, ''),
           description,
         }));
       } catch (e) {
