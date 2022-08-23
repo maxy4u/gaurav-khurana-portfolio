@@ -177,6 +177,14 @@ h3 {
   @apply text-xl font-mono mt-meas7 whitespace-nowrap;
 }
 
+.slide__headline.dark {
+  @apply text-white;
+}
+
+.slide__headline.light {
+  @apply text-black;
+}
+
 .slide__content {
   --d: 60;
   opacity: 0;

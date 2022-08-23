@@ -9,6 +9,7 @@ import React, {
   MouseEventHandler
 } from 'react';
 import { TCards, TCard } from '../constants';
+import { useAppContext } from '../context';
 
 export type TCardComp = TCard & {
   handleCardClick: (index: number) => void;
@@ -30,6 +31,9 @@ type TCardControl = {
 //-----------------------------
 
 function Card({ src, index, current, handleCardClick, headline }: TCardComp): JSX.Element {
+  const {
+    state: { theme }
+  } = useAppContext();
   const cardRef = useRef<HTMLLIElement>(null);
   const handleMouseMove = useCallback((e: MouseEvent<HTMLLIElement>) => {
     if (cardRef?.current) {
@@ -73,7 +77,7 @@ function Card({ src, index, current, handleCardClick, headline }: TCardComp): JS
       </div>
 
       <article className='slide__content'>
-        <h2 className='slide__headline'>{headline}</h2>
+        <h2 className={`${theme} slide__headline`}>{headline}</h2>
       </article>
     </li>
   );

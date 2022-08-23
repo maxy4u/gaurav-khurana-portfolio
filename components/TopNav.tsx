@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { Switch } from '../components';
 import { ActionTypes } from '../constants';
 import { useAppContext } from '../context';
+import Link from 'next/link';
 
 export type TTopNav = {
   navigation: Tnavigation<TPath>;
@@ -12,7 +13,10 @@ export type TTopNav = {
 
 const TopNav: FC<TTopNav> = ({ navigation }) => {
   const { pathname } = useRouter();
-  const [{ theme }, dispatch] = useAppContext();
+  const {
+    state: { theme },
+    dispatch
+  } = useAppContext();
   const onChange = useCallback(({ target: { checked } }: ChangeEvent<HTMLInputElement>) => {
     const theme = checked ? 'dark' : 'light';
     dispatch({ type: ActionTypes.CHANGE_THEME, theme });
@@ -26,9 +30,9 @@ const TopNav: FC<TTopNav> = ({ navigation }) => {
           key={`nav-item-${ind}`}
           className={`${(pathname === navigation[key as keyof typeof navigation]['path'] && styles['active']) || ''}`}
         >
-          <a href={navigation[key as keyof typeof navigation].path}>
+          <Link href={navigation[key as keyof typeof navigation].path}>
             {navigation[key as keyof typeof navigation].label}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>

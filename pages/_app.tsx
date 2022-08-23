@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import { memo } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import client from '../client/apollo-client';
@@ -7,7 +8,7 @@ import { AppWrapper } from '../context';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <AppWrapper>
       <Head>
         <meta name='description' content='Gaurav Khurana portfolio nextjs app' />
         <link rel='shortcut icon' href='/images/favicon.ico' />
@@ -15,13 +16,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel='icon' type='image/png' sizes='32x32' href='/images/favicon-32x32.png' />
         <link rel='icon' type='image/png' sizes='16x16' href='/images/favicon-16x16.png' />
       </Head>
+
       <ApolloProvider client={client}>
-        <AppWrapper>
-          <Component {...pageProps} />
-        </AppWrapper>
+        <Component {...pageProps} />
       </ApolloProvider>
-    </>
+    </AppWrapper>
   );
 }
 
-export default MyApp;
+export default memo(MyApp);

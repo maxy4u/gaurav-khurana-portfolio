@@ -23,7 +23,6 @@ interface TGitHub extends TRepos {
 const GitHub: FC<TGitHub> = ({ repositories, user }) => {
   const [query, setQuery] = useState<string | null>(null);
   const onSearch = useCallback((value: string) => {
-    console.log(value);
     setQuery(value);
   }, []);
   const regexp = useMemo(() => new RegExp(`${query}`, 'gi'), [query]);

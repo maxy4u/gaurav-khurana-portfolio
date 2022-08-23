@@ -12,8 +12,11 @@ export type THeader = {
 };
 
 const Header: FC<THeader> = ({ navigation, user }) => {
-  const [{ theme }] = useAppContext();
-  const [bgColor, iconColor, textColor] = theme === 'dark' ? ['black', 'white', 'white'] : ['white', 'black', 'black'];
+  const {
+    state: { theme }
+  } = useAppContext();
+  const [bgColor, iconColor, textColor] =
+    theme === 'dark' ? ['black', '#E5E7EB', '#E5E7EB'] : ['#E5E7EB', 'black', 'black'];
 
   return (
     <header className={styles.header}>

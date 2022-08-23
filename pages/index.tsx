@@ -1,7 +1,7 @@
+import { memo } from 'react';
 import type { NextPage } from 'next';
 import styles from '../styles/Home.module.css';
 import { Layout } from '../components';
-import { useAppContext } from '../context';
 
 type THome = {
   user: string;
@@ -9,8 +9,6 @@ type THome = {
 
 const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
   const [firstName] = user.split(' ');
-  const [state] = useAppContext();
-  console.log('state', state);
 
   return (
     <>
@@ -36,4 +34,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Home;
+export default memo(Home);

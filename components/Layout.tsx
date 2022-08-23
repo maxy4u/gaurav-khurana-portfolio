@@ -11,7 +11,9 @@ export type TLayout = {
 };
 
 const Layout: FC<TLayout> = ({ user, children }): JSX.Element => {
-  const [{ theme }] = useAppContext();
+  const {
+    state: { theme }
+  } = useAppContext();
   return (
     <section className={`${styles.layout} ${styles[theme]}`}>
       <Header {...{ navigation, user }} />

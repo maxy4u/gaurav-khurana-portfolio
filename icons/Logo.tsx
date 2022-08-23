@@ -250,7 +250,7 @@ M575.367554,384.235657
 z'
     />
     <path
-      fill='#FFFFFF'
+      fill={textColor}
       opacity='1.000000'
       stroke='none'
       d='
@@ -285,7 +285,7 @@ M499.418396,642.011963
 z'
     />
     <path
-      fill='#FFFFFF'
+      fill={textColor}
       opacity='1.000000'
       stroke='none'
       d='
@@ -308,7 +308,7 @@ M625.955139,581.571228
 z'
     />
     <path
-      fill='#FFFFFF'
+      fill={textColor}
       opacity='1.000000'
       stroke='none'
       d='
