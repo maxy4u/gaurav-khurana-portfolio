@@ -1,5 +1,5 @@
 .container {
-  @apply flex-1 bg-transparent  text-white overflow-y-auto;
+  @apply flex-1 bg-transparent  overflow-y-auto;
 }
 
 .main {

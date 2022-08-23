@@ -1,13 +1,17 @@
 import type { NextPage } from 'next';
 import styles from '../styles/Home.module.css';
 import { Layout } from '../components';
+import { useAppContext } from '../context';
 
 type THome = {
   user: string;
 };
 
-const Home: NextPage<THome> = ({ user }): JSX.Element => {
+const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
   const [firstName] = user.split(' ');
+  const [state] = useAppContext();
+  console.log('state', state);
+
   return (
     <>
       <Layout {...{ user }}>

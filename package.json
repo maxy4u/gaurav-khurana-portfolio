@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:prod": "next start -p  80",
     "lint": "eslint . --fix",
-    "format": "prettier ./**/*.{js,jsx,ts,tsx,css,scss,md,json} --config ./.prettierrc --write",
+    "format": "prettier ./**/*.{js,ts,tsx,css,md,json} --config ./.prettierrc --write",
     "formatmd": "prettier --write",
     "success-message": "echo \n\n\n🚀  Everything is awesome. 🚀\n\n🖥️  Auto checking completed, ready to deploy.🖥️\n\n☁️  Run: git push ☁️",
     "prepare": "husky install"

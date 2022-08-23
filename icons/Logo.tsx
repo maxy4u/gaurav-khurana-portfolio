@@ -1,10 +1,12 @@
 import { memo, FC } from 'react';
 
 export type TLogo = {
-  color?: string;
+  bgColor?: string;
+  iconColor?: string;
+  textColor?: string;
 };
 
-const Logo: FC<TLogo> = ({ color }) => (
+const Logo: FC<TLogo> = ({ bgColor, iconColor, textColor }) => (
   <svg
     version='1.1'
     id='Layer_1'
@@ -16,7 +18,7 @@ const Logo: FC<TLogo> = ({ color }) => (
     preserveAspectRatio='xMidYMid meet'
   >
     <path
-      fill={color}
+      fill={bgColor}
       opacity='1.000000'
       stroke='none'
       d='
@@ -165,7 +167,7 @@ M493.509369,583.994751
 z'
     />
     <path
-      fill='#FFFFFF'
+      fill={iconColor}
       opacity='1.000000'
       stroke='none'
       d='
@@ -337,7 +339,7 @@ M493.273254,584.340820
 z'
     />
     <path
-      fill='#000000'
+      fill={textColor}
       opacity='1.000000'
       stroke='none'
       d='
@@ -355,7 +357,9 @@ z'
 );
 
 Logo.defaultProps = {
-  color: '#000000'
+  bgColor: '#000000',
+  iconColor: '#000000',
+  textColor: '#000000'
 };
 
 export default memo(Logo);

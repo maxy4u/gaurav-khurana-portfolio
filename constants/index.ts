@@ -10,6 +10,14 @@ export type Tnavigation<TObj> = {
   resume: TObj;
 };
 
+export type TCard = {
+  index: number;
+  headline: string;
+  src: string;
+};
+
+export type TCards = TCard[];
+
 export const navigation: Tnavigation<TPath> = {
   home: { label: 'Home', path: '/' },
   github: { label: 'GitHub', path: '/github' },
@@ -17,7 +25,11 @@ export const navigation: Tnavigation<TPath> = {
   resume: { label: 'Resume', path: '/resume' }
 };
 
-export const cards = [
+export enum ActionTypes {
+  CHANGE_THEME = 'CHANGE_THEME'
+}
+
+export const cards: TCards = [
   {
     index: 0,
     headline: 'NextJs, ReactJs, Nodejs, TypeScript',

@@ -1,28 +1,57 @@
-import React, { memo, useRef, useState, useCallback, useMemo } from 'react';
+import React, {
+  memo,
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+  SyntheticEvent,
+  MouseEvent,
+  MouseEventHandler
+} from 'react';
+import { TCards, TCard } from '../constants';
+
+export type TCardComp = TCard & {
+  handleCardClick: (index: number) => void;
+  current: number;
+};
+
+export type TCarousel = {
+  cards: TCards;
+};
+
+type TCardControl = {
+  type: string;
+  title: string;
+  handleClick: MouseEventHandler<HTMLButtonElement>;
+};
 
 //-----------------------------
 // Card Component
 //-----------------------------
 
-function Card({ src, index, current, handleCardClick, headline }) {
-  const cardRef = useRef();
-  const handleMouseMove = useCallback((e) => {
-    const el = cardRef.current;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty('--x', e.clientX - (r.left + Math.floor(r.width / 2)));
-    el.style.setProperty('--y', e.clientY - (r.top + Math.floor(r.height / 2)));
+function Card({ src, index, current, handleCardClick, headline }: TCardComp): JSX.Element {
+  const cardRef = useRef<HTMLLIElement>(null);
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLLIElement>) => {
+    if (cardRef?.current) {
+      const el: HTMLLIElement = cardRef?.current;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--x', `${e.clientX - (r.left + Math.floor(r.width / 2))}`);
+      el.style.setProperty('--y', `${e.clientY - (r.top + Math.floor(r.height / 2))}`);
+    }
   }, []);
-  const handleMouseLeave = useCallback((e) => {
-    const el = cardRef.current;
-    el.style.setProperty('--x', 0);
-    el.style.setProperty('--y', 0);
+  const handleMouseLeave = useCallback(() => {
+    if (cardRef?.current) {
+      const el: HTMLLIElement = cardRef.current;
+      el.style.setProperty('--x', '0');
+      el.style.setProperty('--y', '0');
+    }
   }, []);
-  const handleCardClickClb = useCallback((e) => {
+  const handleCardClickClb = useCallback(() => {
     handleCardClick(index);
-  }, []);
+  }, [index]);
 
-  const imageLoaded = (event) => {
-    event.target.style.opacity = 1;
+  const imageLoaded = (event: SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.style.opacity = '1';
   };
 
   let classNames = 'slide';
@@ -54,7 +83,7 @@ function Card({ src, index, current, handleCardClick, headline }) {
 // CardControl component
 //-----------------------------
 
-const CardControl = ({ type, title, handleClick }) => {
+const CardControl = ({ type, title, handleClick }: TCardControl) => {
   return (
     <button className={`btn btn--${type}`} title={title} onClick={handleClick}>
       <svg className='icon' viewBox='0 0 24 24'>
@@ -67,7 +96,7 @@ const CardControl = ({ type, title, handleClick }) => {
 //-----------------------------
 // Carousel Main Component
 //-----------------------------
-const Carousel = ({ cards }) => {
+const Carousel = ({ cards }: TCarousel) => {
   const [current, setCurrent] = useState(0);
   const wrapperTransform = useMemo(
     () => ({
@@ -86,7 +115,7 @@ const Carousel = ({ cards }) => {
     setCurrent(value);
   }, [current, cards]);
   const handleCardClick = useCallback(
-    (index) => {
+    (index: number) => {
       current !== index && setCurrent(index);
     },
     [current]

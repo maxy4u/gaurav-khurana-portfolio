@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import client from '../client/apollo-client';
 import { ApolloProvider } from '@apollo/client';
+import { AppWrapper } from '../context';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel='icon' type='image/png' sizes='16x16' href='/images/favicon-16x16.png' />
       </Head>
       <ApolloProvider client={client}>
-        <Component {...pageProps} />
+        <AppWrapper>
+          <Component {...pageProps} />
+        </AppWrapper>
       </ApolloProvider>
     </>
   );

@@ -1,5 +1,7 @@
+@value layout, dark, light from "./Layout.module.css";
+
 .header {
-  @apply font-sans text-white bg-black basis-[10%];
+  @apply font-sans  basis-[10%];
 }
 
 .header section {
@@ -16,4 +18,12 @@
 
 .logo svg {
   @apply h-[80px] w-[80px];
+}
+
+.layout.dark .header {
+  @apply bg-black text-white;
+}
+
+.layout.light .header {
+  @apply bg-gray-200 text-black;
 }

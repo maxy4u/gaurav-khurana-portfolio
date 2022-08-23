@@ -3,6 +3,8 @@ import { Tnavigation, TPath } from '../constants';
 import styles from '../styles/TopNav.module.css';
 import { useRouter } from 'next/router';
 import { Switch } from '../components';
+import { ActionTypes } from '../constants';
+import { useAppContext } from '../context';
 
 export type TTopNav = {
   navigation: Tnavigation<TPath>;
@@ -10,13 +12,15 @@ export type TTopNav = {
 
 const TopNav: FC<TTopNav> = ({ navigation }) => {
   const { pathname } = useRouter();
-  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.checked);
+  const [{ theme }, dispatch] = useAppContext();
+  const onChange = useCallback(({ target: { checked } }: ChangeEvent<HTMLInputElement>) => {
+    const theme = checked ? 'dark' : 'light';
+    dispatch({ type: ActionTypes.CHANGE_THEME, theme });
   }, []);
 
   return (
     <ul className={styles.navigation}>
-      <Switch id='theme' name='mode' onChange={onChange} />
+      <Switch id='theme' name='mode' onChange={onChange} theme={theme} />
       {Object.keys(navigation).map((key, ind) => (
         <li
           key={`nav-item-${ind}`}

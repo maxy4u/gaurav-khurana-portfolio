@@ -174,7 +174,7 @@ h3 {
 }
 
 .slide__headline {
-  @apply text-xl font-mono mt-meas7;
+  @apply text-xl font-mono mt-meas7 whitespace-nowrap;
 }
 
 .slide__content {

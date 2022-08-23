@@ -7,7 +7,7 @@ export type SearchBoxProps = {
   placeholder?: string;
 };
 
-const SearchBox: FC<SearchBoxProps> = memo(({ onSearch, placeholder }) => {
+const SearchBox: FC<SearchBoxProps> = memo(({ onSearch, placeholder }: SearchBoxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const onKeyPress: KeyboardEventHandler<HTMLInputElement> = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {

@@ -17,17 +17,14 @@
   },
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
+    "prettier/prettier": 0,
     "react/react-in-jsx-scope": "off",
     "no-console": "off",
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
     "react/display-name": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off"
   },
   "globals": {
     "React": "writable"

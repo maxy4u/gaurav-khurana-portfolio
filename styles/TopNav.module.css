@@ -1,15 +1,30 @@
-.navigation {
-  @apply flex list-none font-sans text-right m-0 text-lg text-gray-200;
-}
+@value layout, dark, light from "./Layout.module.css";
 
+.navigation {
+  @apply flex list-none font-sans text-right m-0 text-lg;
+}
+.layout.dark .navigation {
+  @apply text-gray-200;
+}
+.layout.light .navigation {
+  @apply text-black;
+}
 .navigation > li {
   @apply inline-block p-meas7 border-b-2 border-b-transparent;
 }
 
-.navigation > li:hover {
+.layout.dark .navigation > li:hover {
   @apply text-gray-300;
 }
 
-.navigation > li.active {
+.layout.dark .navigation > li.active {
   @apply text-gray-300 border-b-2 border-b-gray-300;
+}
+
+.layout.light .navigation > li:hover {
+  @apply text-gray-600;
+}
+
+.layout.light .navigation > li.active {
+  @apply text-black border-b-2 border-b-black;
 }
