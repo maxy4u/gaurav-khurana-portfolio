@@ -39,12 +39,12 @@
 }
 
 .switch > input:checked ~ .slider {
-  background: #7edafe;
+  @apply bg-red-400;
 }
 
 .switch > input:checked ~ .slider:before {
+  @apply bg-red-500;
   transform: translateX(20px);
-  background: #04acec;
   transition: all 0.4s ease;
 }
 .switch > input:disabled ~ .slider {

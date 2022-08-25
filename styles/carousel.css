@@ -47,8 +47,12 @@ h3 {
   width: 100%;
 }
 
-.icon:hover {
+.btn.dark > .icon:hover {
   fill: var(--color-hover);
+}
+
+.btn.light > .icon:hover {
+  fill: var(--color-secondary);
 }
 
 .slider__controls {
@@ -70,7 +74,7 @@ h3 {
   width: var(--size);
 }
 .slider__controls .btn:focus {
-  border-color: var(--color-focus);
+  @apply border-red-200;
   outline: none;
 }
 .slider__controls .btn--previous > * {
