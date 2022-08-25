@@ -339,7 +339,7 @@ M493.273254,584.340820
 z'
     />
     <path
-      fill={textColor}
+      fill='none'
       opacity='1.000000'
       stroke='none'
       d='

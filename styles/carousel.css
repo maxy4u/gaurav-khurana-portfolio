@@ -156,8 +156,8 @@ h3 {
 .slide__image {
   --d: 20;
   height: 110%;
-  -o-object-fit: cover;
-  object-fit: cover;
+  -o-object-fit: fill;
+  object-fit: fill;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--base-duration) var(--base-ease), transform var(--base-duration) var(--base-ease);

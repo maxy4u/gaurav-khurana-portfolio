@@ -5,7 +5,7 @@
 }
 
 .header section {
-  @apply flex justify-between items-center font-serif text-gray-200 pl-meas2;
+  @apply flex justify-between items-center font-serif  pl-meas2;
 }
 
 .header section > h1 {

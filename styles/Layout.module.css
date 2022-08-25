@@ -1,11 +1,12 @@
 .layout {
-  @apply flex flex-col h-full bg-contain bg-no-repeat bg-right-bottom bg-hero;
+  @apply flex flex-col h-full bg-contain bg-no-repeat bg-right-bottom;
 }
 
 .layout.dark {
-  @apply bg-black text-white;
+  @apply bg-black text-white bg-heroDark;
 }
 
 .layout.light {
-  @apply bg-gray-200 text-black;
+  @apply bg-gray-200 text-black bg-heroLight;
+  background-position-y: 100px;
 }

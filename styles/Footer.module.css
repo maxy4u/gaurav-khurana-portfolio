@@ -1,7 +1,7 @@
 @value layout, dark, light from "./Layout.module.css";
 
 .footer {
-  @apply flex items-center justify-end py-meas11 border-t-2 border-t-slate-300  basis-[10%];
+  @apply flex items-center justify-end py-meas7 border-t-2 border-t-slate-300  basis-[10%];
 }
 
 .footer a {

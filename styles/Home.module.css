@@ -3,12 +3,7 @@
 }
 
 .main {
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @apply p-meas15 flex justify-start flex-grow-[1];
 }
 
 .welcome {
