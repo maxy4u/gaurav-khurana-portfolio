@@ -52,7 +52,7 @@ export const resolvers = {
         throw e;
       }
     },
-    getUser: async (_, { name }: { name: string }) => {
+    getUser: async (_: unknown, { name }: { name: string }) => {
       debugger;
       try {
         const user = await axios.get(`https://api.github.com/users/${name}`);
