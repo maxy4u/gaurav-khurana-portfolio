@@ -47,7 +47,7 @@ const GitHub: FC<TGitHub> = ({ repositories, user }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const {
     data: { getRepos: repositories }
   }: ApolloQueryResult<TRepoData['data']> = await client.query({

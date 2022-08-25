@@ -2,7 +2,7 @@ import { useEffect, useState, ReactNode } from 'react';
 
 export type TClientOnly = {
   children?: ReactNode;
-  props?: any;
+  props?: unknown;
 };
 
 export default function ClientOnly({ children, ...props }: TClientOnly) {
