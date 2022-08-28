@@ -10,7 +10,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppWrapper>
       <Head>
-        <meta name='description' content='Gaurav Khurana portfolio nextjs app' />
+        <meta name='description' content='Gaurav Khurana Ui Developer UI Architect portfolio nextjs app' />
+        <meta name='robots' content='all' />
         <link rel='shortcut icon' href='/images/favicon.ico' />
         <link rel='apple-touch-icon' sizes='180x180' href='/images/apple-touch-icon.png' />
         <link rel='icon' type='image/png' sizes='32x32' href='/images/favicon-32x32.png' />

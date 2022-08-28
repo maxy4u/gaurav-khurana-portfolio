@@ -3,8 +3,9 @@ module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     backgroundImage: {
-      heroDark: "url('/images/gauravkhurana.jpg')",
-      heroLight: "url('/images/gaurav-khurana-uno.jpg')"
+      heroDark: "url('/images/gauravkhurana-dark.jpg')",
+      heroLight: "url('/images/gauravkhurana-light.jpg')",
+      notFoundLight: "url('/images/notfound-light.jpg')"
     },
     fontSize: {
       xs: [

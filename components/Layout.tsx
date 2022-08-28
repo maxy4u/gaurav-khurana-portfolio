@@ -7,15 +7,16 @@ import styles from '../styles/Layout.module.css';
 
 export type TLayout = {
   children: ReactNode;
-  user: string;
+  user?: string;
+  className?: string;
 };
 
-const Layout: FC<TLayout> = ({ user, children }): JSX.Element => {
+const Layout: FC<TLayout> = ({ user, children, className = '' }): JSX.Element => {
   const {
     state: { theme }
   } = useAppContext();
   return (
-    <section className={`${styles.layout} ${styles[theme]}`}>
+    <section className={`${styles.layout} ${styles[theme]} ${className}`}>
       <Header {...{ navigation, user }} />
       {children}
       <Footer />

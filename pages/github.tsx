@@ -69,7 +69,7 @@ const GitHub: FC<TGitHub> = ({ user }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   //
   /* 
   keeping below comment for my reference 

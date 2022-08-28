@@ -8,7 +8,7 @@ import { useAppContext } from '../context';
 
 export type THeader = {
   navigation: Tnavigation<TPath>;
-  user: string;
+  user?: string;
 };
 
 const Header: FC<THeader> = ({ navigation, user }) => {
@@ -21,7 +21,7 @@ const Header: FC<THeader> = ({ navigation, user }) => {
   return (
     <header className={styles.header}>
       <Head>
-        <title>{`${user} Portfolio`}</title>
+        <title>{`${user} UI Developer - Ui Architect | Portfolio`}</title>
       </Head>
       <section>
         <aside className={styles.logo}>

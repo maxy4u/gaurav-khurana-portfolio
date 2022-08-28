@@ -1,0 +1,10 @@
+@value layout;
+
+.layout.dark {
+  @apply bg-black text-white bg-heroDark;
+}
+
+.notfound.light {
+  @apply bg-gray-200 text-black bg-notFoundLight;
+  background-position-y: 100px;
+}
