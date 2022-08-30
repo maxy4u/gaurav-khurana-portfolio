@@ -8,7 +8,7 @@ export type TResume = {
 
 const Resume: FC<TResume> = ({ user }) => {
   return (
-    <Layout {...{ user }}>
+    <Layout {...{ user, title: 'Resume' }}>
       <div className={styles.container}>Resume Page coming soon</div>
     </Layout>
   );

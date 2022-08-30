@@ -9,7 +9,7 @@ export type TGallery = {
 
 const Gallery: FC<TGallery> = ({ user }) => {
   return (
-    <Layout {...{ user }}>
+    <Layout {...{ user, title: 'Gallery' }}>
       <section className={`${stylesHome.container}`}>
         <ClientOnly>
           <Carousel {...{ cards }} />

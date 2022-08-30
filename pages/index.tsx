@@ -12,7 +12,7 @@ const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
 
   return (
     <>
-      <Layout {...{ user }}>
+      <Layout {...{ user, title: 'Home' }}>
         <div className={styles.container}>
           <main className={styles.main}>
             <section className={styles.welcome}>

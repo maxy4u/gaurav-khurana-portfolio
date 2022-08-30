@@ -1,7 +1,5 @@
 .cnSearchBox {
-  display: flex;
-  width: 400px;
-  justify-content: flex-start;
+  @apply sticky top-[-32px] md:static md:top-0 flex justify-start sm:w-[300px] w-[400px];
 }
 
 .cnSearchBoxInput {

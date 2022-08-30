@@ -51,7 +51,7 @@ const GitHub: FC<TGitHub> = ({ user }) => {
   }
 
   return (
-    <Layout {...{ user }}>
+    <Layout {...{ user, title: 'GitHub' }}>
       <section className={`${stylesHome.container} ${styles.gitCont}`}>
         <SearchBox onSearch={onSearch} placeholder='Search repos ...' />
         <h2 className={styles.h2}>List of Repositories</h2>
