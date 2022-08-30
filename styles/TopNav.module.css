@@ -40,13 +40,13 @@
 
 .layout.dark .bar1,
 .layout.dark .bar2,
-.layout.dark .bar3{
+.layout.dark .bar3 {
   background: #f2f5f7;
 }
 
 .layout.light .bar1,
 .layout.light .bar2,
-.layout.light .bar3{
+.layout.light .bar3 {
   background: black;
 }
 
