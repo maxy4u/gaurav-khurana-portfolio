@@ -19,7 +19,11 @@
   @apply list-none;
 }
 .list {
-  @apply py-meas4 table text-lg font-medium;
+  @apply py-meas4 table font-medium;
+}
+
+.list > a {
+  @apply text-lg;
 }
 
 .layout.dark .list:hover {

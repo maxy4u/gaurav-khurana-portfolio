@@ -1,7 +1,7 @@
 import { memo, FC, useState, useCallback, useMemo } from 'react';
 // import client from '../client/apollo-client';
 import { gql, useQuery } from '@apollo/client';
-import { Layout, SearchBox } from '../components';
+import { Layout, SearchBox, Loader } from '../components';
 import stylesHome from '../styles/Home.module.css';
 import { TRepositories } from './api/resolvers';
 import styles from '../styles/GitHub.module.css';
@@ -43,7 +43,7 @@ const GitHub: FC<TGitHub> = ({ user }) => {
   const serchResult = query && repositories.filter(({ name }: { name: string }) => regexp.test(name));
 
   if (loading) {
-    return <h2>Loading Data...</h2>;
+    return <Loader user={user} />;
   }
 
   if (error) {

@@ -4,6 +4,11 @@
 @import './index.css';
 @import './carousel.css';
 
+:root {
+  --dark: #000000;
+  --light: #e5e7eb;
+}
+
 html,
 body {
   height: 100%;
