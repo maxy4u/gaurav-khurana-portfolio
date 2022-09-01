@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta charSet='UTF-8' />
         <meta property='og:title' content='Gaurav Khurana Portfolio' />
         <meta property='og:image' content='/images/gauravkhurana-thumbnail.jpg' />
+        <meta property='og:image:alt' content='Gaurav Khurana' />
         <meta property='og:description' content='Gaurav Khurana Ui Developer UI Architect portfolio nextjs app' />
         <meta property='og:url' content='https://gauravkhurana.ca' />
         <meta property='og:image:width' content='1125' />
