@@ -1,4 +1,14 @@
-import { FC, memo, KeyboardEventHandler, useCallback, useRef, KeyboardEvent, MouseEventHandler } from 'react';
+import {
+  FC,
+  memo,
+  KeyboardEventHandler,
+  useCallback,
+  useRef,
+  KeyboardEvent,
+  MouseEventHandler,
+  ChangeEventHandler,
+  ChangeEvent
+} from 'react';
 import { SvgSearch } from '../icons';
 import styles from '../styles/SearchBox.module.css';
 
@@ -31,6 +41,13 @@ const SearchBox: FC<SearchBoxProps> = memo(({ onSearch, placeholder }: SearchBox
     }
   }, [onSearch, inputRef]);
 
+  const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      onSearch(e.target.value);
+    },
+    [onSearch]
+  );
+
   return (
     <div className={styles.cnSearchBox}>
       <div className={styles.deleteIconCont}>
@@ -40,6 +57,7 @@ const SearchBox: FC<SearchBoxProps> = memo(({ onSearch, placeholder }: SearchBox
           ref={inputRef}
           onKeyPress={onKeyPress}
           placeholder={placeholder}
+          onChange={onChange}
         />
         <span className={styles.deleteIcon} onClick={onClear}>
           x
