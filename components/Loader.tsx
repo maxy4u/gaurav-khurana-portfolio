@@ -1,23 +1,18 @@
 import { memo, FC } from 'react';
 import Layout from './Layout';
 import styles from '../styles/Home.module.css';
-import { Loading } from '../icons';
-import { useAppContext } from '../context';
-import { getCssVar } from '../utils';
+import { NLoading } from '../icons';
 
 export type TLoader = {
   user: string;
 };
+const bgColor = '#FFFFFF';
 
 const Loader: FC<TLoader> = ({ user }) => {
-  const {
-    state: { theme }
-  } = useAppContext();
-  const bgColor = getCssVar(`--${theme}`);
   return (
     <Layout {...{ user }}>
       <section className={`${styles.container}`}>
-        <Loading bgColor={bgColor as string} />
+        <NLoading bgColor={bgColor as string} />
       </section>
     </Layout>
   );
