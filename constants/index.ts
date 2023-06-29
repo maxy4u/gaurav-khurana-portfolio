@@ -106,7 +106,6 @@ export const cards: TCards = [
     headline: 'aws CloudWatch, aws cdk',
     src: '/images/gallery/pc-15.png'
   },
-
   {
     index: 8,
     headline: 'NextJs, ReactJs, Nodejs, TypeScript',
