@@ -64,44 +64,81 @@ export const portfolio = [
 export const cards: TCards = [
   {
     index: 0,
-    headline: 'Graphql, ReactJs, Nodejs, TypeScript, Aws AppSync',
+    headline: 'Graphql, ReactJs, Nodejs, TypeScript, aws AppSync',
     src: '/images/gallery/pc-1.png'
   },
   {
     index: 1,
-    headline: 'Graphql, ReactJs, Nodejs, TypeScript, Aws AppSync',
+    headline: 'Graphql, ReactJs, Nodejs, TypeScript, aws AppSync',
     src: '/images/gallery/pc-2.png'
   },
   {
     index: 2,
-    headline: 'Graphql, ReactJs, Nodejs, TypeScript, Aws AppSync',
+    headline: 'Graphql, ReactJs, Nodejs, TypeScript, aws AppSync',
     src: '/images/gallery/pc-3.png'
   },
   {
     index: 3,
-    headline: 'Graphql, ReactJs, Nodejs, TypeScript, Aws AppSync',
+    headline: 'Graphql, ReactJs, Nodejs, TypeScript, aws AppSync',
     src: '/images/gallery/pc-4.png'
   },
   {
     index: 4,
-    headline: 'Graphql, ReactJs, Nodejs, TypeScript, Aws AppSync',
+    headline: 'Graphql, ReactJs, Nodejs, TypeScript, aws AppSync',
     src: '/images/gallery/pc-5.png'
   },
   {
     index: 5,
-    headline: 'Graphql, ReactJs, Nodejs, TypeScript, Aws AppSync',
+    headline: 'Graphql, ReactJs, Nodejs, TypeScript, aws AppSync',
     src: '/images/gallery/pc-6.png'
   },
   {
     index: 6,
-    headline: 'Graphql, ReactJs, Nodejs, TypeScript, Aws AppSync',
+    headline: 'Graphql, ReactJs, Nodejs, TypeScript, aws AppSync',
     src: '/images/gallery/pc-7.png'
   },
   {
     index: 7,
-    headline: 'Graphql, ReactJs, Nodejs, TypeScript, Aws AppSync',
+    headline: 'Graphql, ReactJs, Nodejs, TypeScript, aws AppSync',
     src: '/images/gallery/pc-8.png'
   },
+
+  {
+    index: 8,
+    headline: 'Graphql, ReactJs, Nodejs, TypeScript, aws AppSync',
+    src: '/images/gallery/pc-9.png'
+  },
+  {
+    index: 9,
+    headline: 'aws (Cognito, AppSync),Graphql, ReactJs, Nodejs, TypeScript',
+    src: '/images/gallery/pc-10.png'
+  },
+  {
+    index: 10,
+    headline: 'aws (Cognito, AppSync), Graphql, ReactJs, Nodejs, TypeScript',
+    src: '/images/gallery/pc-11.png'
+  },
+  {
+    index: 11,
+    headline: 'aws CloudWatch, aws cdk',
+    src: '/images/gallery/pc-12.png'
+  },
+  {
+    index: 12,
+    headline: 'aws CloudWatch, aws cdk',
+    src: '/images/gallery/pc-13.png'
+  },
+  {
+    index: 13,
+    headline: 'aws CloudWatch, aws cdk',
+    src: '/images/gallery/pc-14.png'
+  },
+  {
+    index: 14,
+    headline: 'aws CloudWatch, aws cdk',
+    src: '/images/gallery/pc-15.png'
+  },
+
   {
     index: 8,
     headline: 'NextJs, ReactJs, Nodejs, TypeScript',
