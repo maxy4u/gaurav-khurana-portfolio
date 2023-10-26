@@ -5,6 +5,7 @@ export interface TPath {
 
 export type Tnavigation<TObj> = {
   home: TObj;
+  portfolio: TObj;
   github: TObj;
   gallery: TObj;
   resume: TObj;
@@ -20,6 +21,7 @@ export type TCards = TCard[];
 
 export const navigation: Tnavigation<TPath> = {
   home: { label: 'Home', path: '/' },
+  portfolio: { label: 'Portfolio', path: '/portfolio' },
   github: { label: 'GitHub', path: '/github' },
   gallery: { label: 'Gallery', path: '/gallery' },
   resume: { label: 'Resume', path: '/resume' }
@@ -28,6 +30,36 @@ export const navigation: Tnavigation<TPath> = {
 export enum ActionTypes {
   CHANGE_THEME = 'CHANGE_THEME'
 }
+
+export const portfolio = [
+  '/images/portfolio/img0.jpg',
+  '/images/portfolio/img1.jpg',
+  '/images/portfolio/img2.jpg',
+  '/images/portfolio/img3.jpg',
+  '/images/portfolio/img4.jpg',
+  '/images/portfolio/img5.jpg',
+  '/images/portfolio/img6.jpg',
+  '/images/portfolio/img7.jpg',
+  '/images/portfolio/img8.jpg',
+  '/images/portfolio/img9.jpg',
+  '/images/portfolio/img10.jpg',
+  '/images/portfolio/img11.jpg',
+  '/images/portfolio/img12.jpg',
+  '/images/portfolio/img13.jpg',
+  '/images/portfolio/img14.jpg',
+  '/images/portfolio/img15.jpg',
+  '/images/portfolio/img16.jpg',
+  '/images/portfolio/img17.jpg',
+  '/images/portfolio/img18.jpg',
+  '/images/portfolio/img19.jpg',
+  '/images/portfolio/img20.jpg',
+  '/images/portfolio/img21.jpg',
+  '/images/portfolio/img22.jpg',
+  '/images/portfolio/img23.jpg',
+  '/images/portfolio/img24.jpg',
+  '/images/portfolio/img25.jpg',
+  '/images/portfolio/img26.jpg'
+];
 
 export const cards: TCards = [
   {

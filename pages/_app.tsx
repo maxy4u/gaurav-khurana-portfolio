@@ -10,14 +10,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppWrapper>
       <Head>
-        <meta name='description' content='Gaurav Khurana Ui Developer UI Architect portfolio nextjs app' />
+        <meta name='description' content='Gaurav Khurana Actor Ui Developer UI Architect portfolio' />
         <meta name='robots' content='index, follow' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <meta charSet='UTF-8' />
-        <meta property='og:title' content='Gaurav Khurana Portfolio' />
+        <meta property='og:title' content='Gaurav Khurana Actor Portfolio' />
         <meta property='og:image' content='/images/gauravkhurana-thumbnail.jpg' />
         <meta property='og:image:alt' content='Gaurav Khurana' />
-        <meta property='og:description' content='Gaurav Khurana Ui Developer UI Architect portfolio nextjs app' />
+        <meta property='og:description' content='Gaurav Khurana Actor Ui Developer UI Architect portfolio' />
         <meta property='og:url' content='https://gauravkhurana.ca' />
         <meta property='og:image:width' content='1125' />
         <meta property='og:image:height' content='625' />

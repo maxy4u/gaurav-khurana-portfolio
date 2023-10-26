@@ -20,6 +20,11 @@ const Footer: FC<TFooter> = ({}) => {
           <Image src='/github.svg' alt='Gaurav Khurana GitHub Profile' width={35} height={36} />
         </span>
       </a>
+      <a href='https://www.instagram.com/poonagrani' target='_blank' rel='noopener noreferrer'>
+        <span className={styles.logo}>
+          <Image src='/instagram.svg' alt='Gaurav Khurana Instagram Profile' width={35} height={36} />
+        </span>
+      </a>
     </footer>
   );
 };

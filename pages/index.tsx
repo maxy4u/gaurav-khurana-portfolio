@@ -18,6 +18,7 @@ const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
             <section className={styles.welcome}>
               <h1>Hello I am {firstName}</h1>
               <h2>Welcome to my portfolio!</h2>
+              <p>I am a programmer (UI Developer/ UI Architect) & A Theater Actor</p>
             </section>
           </main>
         </div>
