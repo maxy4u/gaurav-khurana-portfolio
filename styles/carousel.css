@@ -90,6 +90,12 @@ h3 {
   width: var(--slide-size);
 }
 
+@media only screen and (max-width: 768px) {
+  .slider {
+    --slide-size: 90vmin;
+  }
+}
+
 .slider__wrapper {
   display: flex;
   margin: 0 calc(var(--slide-margin) * -1);
@@ -178,7 +184,9 @@ h3 {
 }
 
 .slide__headline {
-  @apply text-xl font-mono mt-meas7 whitespace-nowrap;
+  @apply text-xl font-mono mt-meas7;
+  white-space: pre-wrap;
+  line-height: inherit;
 }
 
 .slide__headline.dark {

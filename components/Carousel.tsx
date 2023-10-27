@@ -2,6 +2,7 @@ import React, {
   memo,
   useRef,
   useState,
+  useEffect,
   useCallback,
   useMemo,
   SyntheticEvent,
@@ -10,6 +11,7 @@ import React, {
 } from 'react';
 import { TCards, TCard } from '../constants';
 import { useAppContext } from '../context';
+import { useSwipe } from '../utils';
 
 export type TCardComp = TCard & {
   handleCardClick: (index: number) => void;
@@ -25,6 +27,11 @@ type TCardControl = {
   title: string;
   handleClick: MouseEventHandler<HTMLButtonElement>;
 };
+
+enum KeyPressed {
+  ArrowLeft = 'ArrowLeft',
+  ArrowRight = 'ArrowRight'
+}
 
 //-----------------------------
 // Card Component
@@ -105,15 +112,27 @@ const CardControl = ({ type, title, handleClick }: TCardControl) => {
 //-----------------------------
 const Carousel = ({ cards }: TCarousel) => {
   const [current, setCurrent] = useState(0);
+  const [key, setKey] = useState<KeyPressed | null>(null);
   const wrapperTransform = useMemo(
     () => ({
       transform: `translateX(-${current * (100 / cards.length)}%)`
     }),
     [current]
   );
+
+  useEffect(() => {
+    // Listen for any keydown event on the document's body
+    document.body.addEventListener('keydown', logEventKey);
+
+    return () => {
+      // remove event listener on unmount
+      document.body.removeEventListener('keydown', logEventKey);
+    };
+  }, []);
+
   const handlePrevClick = useCallback(() => {
     const previous = current - 1;
-    const value = (previous < 0 && cards.length - 1) || previous;
+    const value = previous < 0 && cards.length - 1 ? cards.length - 1 : previous;
     setCurrent(value);
   }, [current]);
   const handleNextClick = useCallback(() => {
@@ -127,12 +146,28 @@ const Carousel = ({ cards }: TCarousel) => {
     },
     [current]
   );
+  //------ detect key change-------
+  useEffect(() => {
+    if (key === KeyPressed.ArrowRight) {
+      setKey(null);
+      handleNextClick();
+    }
+    if (key === KeyPressed.ArrowLeft) {
+      setKey(null);
+      handlePrevClick();
+    }
+  }, [key, handlePrevClick, handleNextClick]);
+  const logEventKey = useCallback((e: KeyboardEvent) => {
+    if (e.key === KeyPressed.ArrowRight || e.key === KeyPressed.ArrowLeft) setKey(e.key);
+  }, []);
+
+  const swipeHandlers = useSwipe({ onSwipedLeft: handleNextClick, onSwipedRight: handlePrevClick });
 
   return (
-    <div className='slider'>
+    <div className='slider' {...swipeHandlers}>
       <ul className='slider__wrapper' style={wrapperTransform}>
-        {cards.map((card) => {
-          return <Card key={card.index} current={current} handleCardClick={handleCardClick} {...card} />;
+        {cards.map((card, index) => {
+          return <Card key={card.index} current={current} handleCardClick={handleCardClick} {...{ ...card, index }} />;
         })}
       </ul>
 
