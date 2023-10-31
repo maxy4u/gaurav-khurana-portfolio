@@ -29,11 +29,11 @@ const Header: FC<THeader> = ({ navigation, user, title }) => {
   return (
     <header className={styles.header}>
       <Head>
-        <title>{`${user} UI Developer - Ui Architect | ${title}`}</title>
+        <title>{`${user} UI Developer - Ui Architect - Actor | ${title}`}</title>
       </Head>
       <section>
         <aside className={styles.logo}>
-          <a href='/' title='Gaurav Khurana portfolio'>
+          <a href='/' title='Gaurav Khurana UI Developer - Ui Architect - Actor Portfolio'>
             <Logo {...{ bgColor, iconColor, textColor }} />
           </a>
           <h1>{user}</h1>

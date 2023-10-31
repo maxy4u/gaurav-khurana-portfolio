@@ -16,7 +16,14 @@ const Gallery: FC<Portfolio> = ({ user }) => {
           {portfolio.map((src, ind) => {
             return (
               <div key={`portfolio-img-${ind}`} className='portfolio-image'>
-                <Image src={src} alt='Gaurav Khurana Actor' loading='lazy' placeholder='blur' className='image' />
+                <Image
+                  src={src}
+                  alt='Gaurav Khurana Actor'
+                  loading='lazy'
+                  placeholder='blur'
+                  className='image'
+                  title='Gaurav Khurana Actor'
+                />
               </div>
             );
           })}
