@@ -2,6 +2,7 @@ import { memo } from 'react';
 import type { NextPage } from 'next';
 import styles from '../styles/Home.module.css';
 import { Layout } from '../components';
+import { getAge } from '../utils';
 
 type THome = {
   user: string;
@@ -38,6 +39,8 @@ const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
                   <dd>- 130lbs</dd>
                   <dt>Waist</dt>
                   <dd>- 29</dd>
+                  <dt>Age</dt>
+                  <dd>- {getAge(new Date(1984, 3, 17))}</dd>
                 </dl>
               </p>
             </section>

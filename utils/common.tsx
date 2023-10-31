@@ -17,3 +17,10 @@ export function setCssVar(name: string, value: string) {
     r?.style.setProperty(name, value);
   }
 }
+
+export function getAge(dob: Date) {
+  const diff_ms = Date.now() - dob.getTime();
+  const age_dt = new Date(diff_ms);
+
+  return Math.abs(age_dt.getUTCFullYear() - 1970);
+}
