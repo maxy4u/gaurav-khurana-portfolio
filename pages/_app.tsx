@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name='description' content='Gaurav Khurana Actor Ui Developer UI Architect portfolio' />
         <meta name='robots' content='index, follow' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name='format-detection' content='telephone=no' />
         <meta charSet='UTF-8' />
         <meta property='og:title' content='Gaurav Khurana Actor Portfolio' />
         <meta property='og:image' content='/images/gauravkhurana-thumbnail.jpg' />

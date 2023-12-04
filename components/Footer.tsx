@@ -10,6 +10,11 @@ export type TFooter = {
 const Footer: FC<TFooter> = ({}) => {
   return (
     <footer className={styles.footer}>
+      <a href='tel:+1-902-440-1591' target='_blank' rel='noopener noreferrer'>
+        <span className={styles.logo}>
+          <Image src='/phone.svg' alt='Gaurav Khurana Instagram Profile' width={35} height={36} title='instagram' />
+        </span>
+      </a>
       <a href='mailto:khurana.g@hotmail.com' target='_blank' rel='noopener noreferrer'>
         <span className={styles.logo}>
           <Image src='/mail.svg' alt='Gaurav Khurana email' width={35} height={36} title='email' />
