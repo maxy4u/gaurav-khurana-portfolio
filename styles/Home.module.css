@@ -3,7 +3,7 @@
 }
 
 .main {
-  @apply p-meas15 flex justify-start flex-grow-[1];
+  @apply p-meas15 flex justify-start flex-grow-[1] md:w-[60%];
 }
 
 .welcome {

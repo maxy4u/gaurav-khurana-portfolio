@@ -29,7 +29,9 @@ const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
                 <strong>United Airlines</strong>,<strong>Copart Inc</strong>{' '}
               </p>
               <p className='leading-6 '>
-                I practice acting as well, a full time actor when not hitched any Computer programing contract.
+                I am trained in acting as well, attended theater schools (Neptune Theater School & Shakespear by the
+                sea) in Halifax, Nova Scotia , Canada. A full time actor when not hitched any Computer programing
+                contract.
                 <dl>
                   <dt>Height</dt>
                   <dd>- 5 feet 5 inches</dd>
@@ -41,6 +43,8 @@ const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
                   <dd>- 29</dd>
                   <dt>Age</dt>
                   <dd>- {getAge(new Date(1984, 3, 17))}</dd>
+                  <dt>Others</dt>
+                  <dd>- Trained in Taekwondo, Yoga, Strength training, Love playing tennis, Avid animal lover</dd>
                 </dl>
               </p>
             </section>

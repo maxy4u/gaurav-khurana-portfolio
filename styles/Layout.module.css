@@ -3,10 +3,10 @@
 }
 
 .layout.dark {
-  @apply bg-black text-white bg-heroDark;
+  @apply bg-black text-white md:bg-heroDark;
 }
 
 .layout.light {
-  @apply bg-gray-200 text-black bg-heroLight;
+  @apply bg-gray-200 text-black md:bg-heroLight;
   background-position-y: 100px;
 }
