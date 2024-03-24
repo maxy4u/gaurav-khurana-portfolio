@@ -18,9 +18,15 @@ export function setCssVar(name: string, value: string) {
   }
 }
 
-export function getAge(dob: Date) {
-  const diff_ms = Date.now() - dob.getTime();
-  const age_dt = new Date(diff_ms);
+export function getAge(birthDateString: string) {
+  const today = new Date();
+  const birthDate = new Date(birthDateString);
 
-  return Math.abs(age_dt.getUTCFullYear() - 1970);
+  const yearsDifference = today.getFullYear() - birthDate.getFullYear();
+
+  const isBeforeBirthday =
+    today.getMonth() < birthDate.getMonth() ||
+    (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate());
+
+  return isBeforeBirthday ? yearsDifference - 1 : yearsDifference;
 }

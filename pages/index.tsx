@@ -24,9 +24,9 @@ const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
                 Canadian Citizen authorized to work in India as well.
               </p>
               <p className='leading-6 my-4'>
-                As a programmer i predominantly work for US clients remotely from Canada and sucessfully delivered web
-                application to clients like <strong>Electronic Arts</strong>,<strong>Paxia Inc</strong>,
-                <strong>United Airlines</strong>,<strong>Copart Inc</strong>{' '}
+                As a programmer, I predominantly work for US clients remotely from Canada and sucessfully delivered web
+                application to clients like <strong>Phillips Connect</strong>,<strong>Electronic Arts</strong>,
+                <strong>Paxia Inc</strong>,<strong>United Airlines</strong>,<strong>Copart Inc</strong>{' '}
               </p>
               <p className='leading-6 '>
                 I am trained in acting as well, attended theater schools (Neptune Theater School & Shakespear by the
@@ -42,7 +42,7 @@ const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
                   <dt>Waist</dt>
                   <dd>- 29</dd>
                   <dt>Age</dt>
-                  <dd>- {getAge(new Date(1984, 3, 17))}</dd>
+                  <dd>- {getAge('1984-03-17')}</dd>
                   <dt>Others</dt>
                   <dd>- Trained in Taekwondo, Yoga, Strength training, Love playing tennis, Avid animal lover</dd>
                 </dl>
