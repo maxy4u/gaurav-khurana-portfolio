@@ -20,8 +20,8 @@ const Home: NextPage<THome> = ({ user }: THome): JSX.Element => {
               <h1>Hello I am {firstName}</h1>
               <h2>Welcome to my portfolio!</h2>
               <p className='leading-6 my-4'>
-                I am a software programmer (UI Developer/ UI Architect) & A Theater Actor based in Nova Scotia (Canada).
-                Canadian Citizen authorized to work in India as well.
+                I am a software programmer (UI Developer/ UI Architect, AS400 Developer, RPG, RPGILE, CLLE) & A Theater
+                Actor based in Nova Scotia (Canada). Canadian Citizen authorized to work in India as well.
               </p>
               <p className='leading-6 my-4'>
                 As a programmer, I predominantly work for US clients remotely from Canada and sucessfully delivered web
