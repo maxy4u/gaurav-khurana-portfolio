@@ -1,9 +1,10 @@
 import { ApolloServer, gql } from 'apollo-server-micro';
+import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 import Cors from 'micro-cors';
 import { resolvers } from './resolvers';
 
 export const typeDefs = gql(`
-  scalar DateTime
+  scalar Date
     type Owner {
         avatar_url : String
         login: String
@@ -19,8 +20,8 @@ export const typeDefs = gql(`
         id: Int!
         title: String
         company: String
-        start: DateTime
-        end: DateTime
+        start: Date
+        end: Date
         desc: String
         skills: String
         published: Boolean
@@ -33,8 +34,8 @@ export const typeDefs = gql(`
         exp:     Experience!
         expid:   Int
         content: String
-        createdAt:  DateTime  
-        updatedAt: DateTime
+        createdAt:  Date
+        updatedAt: Date
     }
     
     type User {
@@ -60,6 +61,7 @@ export const typeDefs = gql(`
 
 const cors = Cors();
 const apolloServer = new ApolloServer({
+  cache: new InMemoryLRUCache(),
   typeDefs,
   resolvers
 });

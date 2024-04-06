@@ -23,7 +23,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
-  DateTime: { input: any; output: any };
+  Date: { input: any; output: any };
 };
 
 export type Experience = {
@@ -32,12 +32,12 @@ export type Experience = {
   authorId?: Maybe<Scalars['Int']['output']>;
   company?: Maybe<Scalars['String']['output']>;
   desc?: Maybe<Scalars['String']['output']>;
-  end?: Maybe<Scalars['DateTime']['output']>;
+  end?: Maybe<Scalars['Date']['output']>;
   id: Scalars['Int']['output'];
   published?: Maybe<Scalars['Boolean']['output']>;
   roles?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   skills?: Maybe<Scalars['String']['output']>;
-  start?: Maybe<Scalars['DateTime']['output']>;
+  start?: Maybe<Scalars['Date']['output']>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -80,11 +80,11 @@ export type Resume = {
 export type Roles = {
   __typename?: 'Roles';
   content?: Maybe<Scalars['String']['output']>;
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  createdAt?: Maybe<Scalars['Date']['output']>;
   exp: Experience;
   expid?: Maybe<Scalars['Int']['output']>;
   id: Scalars['ID']['output'];
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['Date']['output']>;
 };
 
 export type User = {
