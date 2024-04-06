@@ -2,9 +2,8 @@ import '../styles/globals.css';
 import { memo } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import client from '../client/apollo-client';
-import { ApolloProvider } from '@apollo/client';
 import { AppWrapper } from '../context';
+import { Providers } from '../provider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -29,9 +28,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel='icon' type='image/png' sizes='16x16' href='/images/favicon-16x16.png' />
       </Head>
 
-      <ApolloProvider client={client}>
+      <Providers>
         <Component {...pageProps} />
-      </ApolloProvider>
+      </Providers>
     </AppWrapper>
   );
 }

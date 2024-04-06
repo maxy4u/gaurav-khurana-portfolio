@@ -1,32 +1,21 @@
 import axios from 'axios';
-import { ApolloQueryResult } from '@apollo/client';
-
-export interface TRepositories {
-  id: number;
-  name: string;
-  owner: {
-    avatar_url: string;
-    login: string;
-  };
-  url: string;
-  description: string;
-}
+import { Repository } from '../../../utils';
+import { GraphQLDateTime } from 'graphql-iso-date';
 
 export const resolvers = {
+  DateTime: GraphQLDateTime,
   Query: {
     getRepos: async () => {
       try {
-        const { data }: ApolloQueryResult<TRepositories[]> = await axios.get(
-          'https://api.github.com/users/maxy4u/repos?per_page=100'
-        );
-        return data.map(({ id, name, owner, url, description }) => ({
+        const { data } = await axios.get('https://api.github.com/users/maxy4u/repos?per_page=100');
+        return (data as Repository[]).map(({ id, name, owner, url, description }) => ({
           id,
           name,
           owner: {
-            login: owner.login,
-            avatar_url: owner.avatar_url
+            login: owner?.login,
+            avatar_url: owner?.avatar_url
           },
-          url: url.replace(/(api\.|repos\/)/g, ''),
+          url: url?.replace(/(api\.|repos\/)/g, ''),
           description
         }));
       } catch (e) {
@@ -35,19 +24,19 @@ export const resolvers = {
     },
     getRepo: async (id: number) => {
       try {
-        const repos: TRepositories[] = await axios.get('https://api.github.com/users/maxy4u/repos');
+        const repos: Repository[] = await axios.get('https://api.github.com/users/maxy4u/repos');
         return repos
           .map(({ id, name, owner, url, description }) => ({
             id,
             name,
             owner: {
-              login: owner.login,
-              avatar_url: owner.avatar_url
+              login: owner?.login,
+              avatar_url: owner?.avatar_url
             },
             url,
             description
           }))
-          .filter((repo) => repo.id === id);
+          .filter((repo) => Number(repo.id) === id);
       } catch (e) {
         throw e;
       }

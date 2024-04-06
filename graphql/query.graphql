@@ -1,0 +1,14 @@
+scalar GraphQLDateTime
+
+query GetRepositories {
+  getRepos {
+    id
+    name
+    owner {
+      avatar_url
+      login
+    }
+    url
+    description
+  }
+}

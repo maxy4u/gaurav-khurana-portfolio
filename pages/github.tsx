@@ -1,48 +1,25 @@
 import { memo, FC, useState, useCallback, useMemo } from 'react';
-// import client from '../client/apollo-client';
-import { gql, useQuery } from '@apollo/client';
+import { useGetRepositoriesQuery, GetRepositoriesQuery, Repository } from '../utils';
 import { Layout, SearchBox, Loader } from '../components';
 import stylesHome from '../styles/Home.module.css';
-import { TRepositories } from './api/resolvers';
 import styles from '../styles/GitHub.module.css';
-
-interface TRepoData {
-  data: {
-    getRepos: TRepositories[] | [];
-  };
-}
 
 interface TGitHub {
   user: string;
 }
 
-const Query = gql`
-  query GetRepositories {
-    getRepos {
-      id
-      name
-      owner {
-        avatar_url
-        login
-      }
-      url
-      description
-    }
-  }
-`;
-
 const GitHub: FC<TGitHub> = ({ user }) => {
   const [query, setQuery] = useState<string | null>(null);
-  const { data, loading, error } = useQuery<TRepoData['data']>(Query);
-  const { getRepos: repositories }: { getRepos: TRepositories[] | [] } = data || { getRepos: [] };
+  const { data, isLoading, error } = useGetRepositoriesQuery<GetRepositoriesQuery>();
+  const { getRepos: repositories } = data || { getRepos: [] };
 
   const onSearch = useCallback((value: string) => {
     setQuery(value);
   }, []);
   const regexp = useMemo(() => new RegExp(`${query}`, 'gi'), [query]);
-  const serchResult = query && repositories.filter(({ name }: { name: string }) => regexp.test(name));
+  const serchResult = !!query && (repositories as Repository[])?.filter(({ name }) => regexp.test(name as string));
 
-  if (loading) {
+  if (isLoading) {
     return <Loader user={user} />;
   }
 
@@ -56,13 +33,15 @@ const GitHub: FC<TGitHub> = ({ user }) => {
         <SearchBox onSearch={onSearch} placeholder='Search repos ...' />
         <h2 className={styles.h2}>List of Repositories</h2>
         <ul className={styles.repos}>
-          {(serchResult || repositories).map(({ id, description, name, url }: Partial<TRepositories>) => (
-            <li key={id} className={styles.list}>
-              <a href={url} title={description} target='_blank' rel='noreferrer'>
-                {name}
-              </a>
-            </li>
-          ))}
+          {((serchResult || repositories) as Repository[])?.map(
+            ({ id, description, name, url }: Partial<Repository>) => (
+              <li key={id} className={styles.list}>
+                <a href={url as string} title={description as string} target='_blank' rel='noreferrer'>
+                  {name}
+                </a>
+              </li>
+            )
+          )}
         </ul>
       </section>
     </Layout>
