@@ -9,6 +9,7 @@ type RequestInit = {
 
 export const fetcher = <TData, TVariables>(query: string, variables?: TVariables, options?: RequestInit['headers']) => {
   return async (): Promise<TData> => {
+    debugger;
     const { next, cache, ...restOptions } = options || {};
     const res = await fetch(`${process.env.host || ''}/api/graphql`, {
       method: 'POST',
@@ -20,8 +21,9 @@ export const fetcher = <TData, TVariables>(query: string, variables?: TVariables
       next,
       cache
     });
-
+    debugger;
     const json = await res.json();
+    debugger;
 
     if (json.errors) {
       const { message } = json.errors[0];

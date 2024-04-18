@@ -1,9 +1,10 @@
-import { ApolloServer, gql } from 'apollo-server-micro';
-import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
-import Cors from 'micro-cors';
-import { resolvers } from './resolvers';
+import { ApolloServer } from '@apollo/server';
+import { startServerAndCreateNextHandler } from '@as-integrations/next';
+import { gql } from 'graphql-tag';
+import { NextRequest } from 'next/server';
+import { resolvers } from '../../../resolvers';
 
-export const typeDefs = gql(`
+const typeDefs = gql(`
   scalar Date
     type Owner {
         avatar_url : String
@@ -25,7 +26,7 @@ export const typeDefs = gql(`
         desc: String
         skills: String
         published: Boolean
-        roles: [String]
+        role: [Roles]
         author:    User
         authorId:  Int
     }
@@ -56,31 +57,21 @@ export const typeDefs = gql(`
         getRepos : [Repository]
         getUser(name: String): User!
         getResume: Resume
+        getUserExperience(email: String, pwd: String) : User!
     }
 `);
 
-const cors = Cors();
 const apolloServer = new ApolloServer({
-  cache: new InMemoryLRUCache(),
   typeDefs,
   resolvers
 });
 
-const startServer = apolloServer.start();
+const handler = startServerAndCreateNextHandler<NextRequest>(apolloServer);
 
-export default cors(async function handler(req, res) {
-  if (req.method === 'OPTIONS') {
-    res.end();
-    return false;
-  }
-  await startServer;
-  await apolloServer.createHandler({
-    path: '/api/graphql'
-  })(req, res);
-});
+export async function GET(request: NextRequest) {
+  return handler(request);
+}
 
-export const config = {
-  api: {
-    bodyParser: false
-  }
-};
+export async function POST(request: NextRequest) {
+  return handler(request);
+}

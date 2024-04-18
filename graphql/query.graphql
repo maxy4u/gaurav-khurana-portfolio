@@ -1,5 +1,21 @@
 scalar Date
 
+fragment experience on Experience {
+  id
+  title
+  company
+  start
+  end
+  desc
+  role {
+    id
+    expid
+    content
+  }
+  skills
+  published
+  authorId
+}
 query GetRepositories {
   getRepos {
     id
@@ -10,5 +26,15 @@ query GetRepositories {
     }
     url
     description
+  }
+}
+
+query GetUserExperience($email: String, $pwd: String) {
+  getUserExperience(email: $email, pwd: $pwd) {
+    id
+    email
+    exp {
+      ...experience
+    }
   }
 }

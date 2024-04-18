@@ -1,3 +1,4 @@
+'use client';
 import { useQuery, useSuspenseQuery, UseQueryOptions, UseSuspenseQueryOptions } from '@tanstack/react-query';
 import { fetcher } from '../remote/fetcher';
 export type Maybe<T> = T | null;
@@ -35,7 +36,7 @@ export type Experience = {
   end?: Maybe<Scalars['Date']['output']>;
   id: Scalars['Int']['output'];
   published?: Maybe<Scalars['Boolean']['output']>;
-  roles?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  role?: Maybe<Array<Maybe<Roles>>>;
   skills?: Maybe<Scalars['String']['output']>;
   start?: Maybe<Scalars['Date']['output']>;
   title?: Maybe<Scalars['String']['output']>;
@@ -53,6 +54,7 @@ export type Query = {
   getRepos?: Maybe<Array<Maybe<Repository>>>;
   getResume?: Maybe<Resume>;
   getUser: User;
+  getUserExperience: User;
 };
 
 export type QueryGetRepoArgs = {
@@ -61,6 +63,11 @@ export type QueryGetRepoArgs = {
 
 export type QueryGetUserArgs = {
   name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type QueryGetUserExperienceArgs = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  pwd?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Repository = {
@@ -99,6 +106,20 @@ export type User = {
   url?: Maybe<Scalars['String']['output']>;
 };
 
+export type ExperienceFragment = {
+  __typename?: 'Experience';
+  id: number;
+  title?: string | null;
+  company?: string | null;
+  start?: any | null;
+  end?: any | null;
+  desc?: string | null;
+  skills?: string | null;
+  published?: boolean | null;
+  authorId?: number | null;
+  role?: Array<{ __typename?: 'Roles'; id: string; expid?: number | null; content?: string | null } | null> | null;
+};
+
 export type GetRepositoriesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetRepositoriesQuery = {
@@ -113,6 +134,51 @@ export type GetRepositoriesQuery = {
   } | null> | null;
 };
 
+export type GetUserExperienceQueryVariables = Exact<{
+  email?: InputMaybe<Scalars['String']['input']>;
+  pwd?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+export type GetUserExperienceQuery = {
+  __typename?: 'Query';
+  getUserExperience: {
+    __typename?: 'User';
+    id: string;
+    email?: string | null;
+    exp?: Array<{
+      __typename?: 'Experience';
+      id: number;
+      title?: string | null;
+      company?: string | null;
+      start?: any | null;
+      end?: any | null;
+      desc?: string | null;
+      skills?: string | null;
+      published?: boolean | null;
+      authorId?: number | null;
+      role?: Array<{ __typename?: 'Roles'; id: string; expid?: number | null; content?: string | null } | null> | null;
+    } | null> | null;
+  };
+};
+
+export const ExperienceFragmentDoc = `
+    fragment experience on Experience {
+  id
+  title
+  company
+  start
+  end
+  desc
+  role {
+    id
+    expid
+    content
+  }
+  skills
+  published
+  authorId
+}
+    `;
 export const GetRepositoriesDocument = `
     query GetRepositories {
   getRepos {
@@ -162,3 +228,50 @@ useSuspenseGetRepositoriesQuery.getKey = (variables?: GetRepositoriesQueryVariab
 
 useGetRepositoriesQuery.fetcher = (variables?: GetRepositoriesQueryVariables, options?: RequestInit['headers']) =>
   fetcher<GetRepositoriesQuery, GetRepositoriesQueryVariables>(GetRepositoriesDocument, variables, options);
+
+export const GetUserExperienceDocument = `
+    query GetUserExperience($email: String, $pwd: String) {
+  getUserExperience(email: $email, pwd: $pwd) {
+    id
+    email
+    exp {
+      ...experience
+    }
+  }
+}
+    ${ExperienceFragmentDoc}`;
+
+export const useGetUserExperienceQuery = <TData = GetUserExperienceQuery, TError = unknown>(
+  variables?: GetUserExperienceQueryVariables,
+  options?: Omit<UseQueryOptions<GetUserExperienceQuery, TError, TData>, 'queryKey'> & {
+    queryKey?: UseQueryOptions<GetUserExperienceQuery, TError, TData>['queryKey'];
+  }
+) => {
+  return useQuery<GetUserExperienceQuery, TError, TData>({
+    queryKey: variables === undefined ? ['GetUserExperience'] : ['GetUserExperience', variables],
+    queryFn: fetcher<GetUserExperienceQuery, GetUserExperienceQueryVariables>(GetUserExperienceDocument, variables),
+    ...options
+  });
+};
+
+useGetUserExperienceQuery.getKey = (variables?: GetUserExperienceQueryVariables) =>
+  variables === undefined ? ['GetUserExperience'] : ['GetUserExperience', variables];
+
+export const useSuspenseGetUserExperienceQuery = <TData = GetUserExperienceQuery, TError = unknown>(
+  variables?: GetUserExperienceQueryVariables,
+  options?: Omit<UseSuspenseQueryOptions<GetUserExperienceQuery, TError, TData>, 'queryKey'> & {
+    queryKey?: UseSuspenseQueryOptions<GetUserExperienceQuery, TError, TData>['queryKey'];
+  }
+) => {
+  return useSuspenseQuery<GetUserExperienceQuery, TError, TData>({
+    queryKey: variables === undefined ? ['GetUserExperienceSuspense'] : ['GetUserExperienceSuspense', variables],
+    queryFn: fetcher<GetUserExperienceQuery, GetUserExperienceQueryVariables>(GetUserExperienceDocument, variables),
+    ...options
+  });
+};
+
+useSuspenseGetUserExperienceQuery.getKey = (variables?: GetUserExperienceQueryVariables) =>
+  variables === undefined ? ['GetUserExperienceSuspense'] : ['GetUserExperienceSuspense', variables];
+
+useGetUserExperienceQuery.fetcher = (variables?: GetUserExperienceQueryVariables, options?: RequestInit['headers']) =>
+  fetcher<GetUserExperienceQuery, GetUserExperienceQueryVariables>(GetUserExperienceDocument, variables, options);

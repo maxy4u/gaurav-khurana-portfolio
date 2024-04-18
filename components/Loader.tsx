@@ -1,6 +1,5 @@
 import { memo, FC } from 'react';
-import Layout from './Layout';
-import styles from '../styles/Home.module.css';
+import styles from '../app/Home.module.css';
 import { NLoading } from '../icons';
 
 export type TLoader = {
@@ -8,13 +7,11 @@ export type TLoader = {
 };
 const bgColor = '#FFFFFF';
 
-const Loader: FC<TLoader> = ({ user }) => {
+const Loader: FC<TLoader> = () => {
   return (
-    <Layout {...{ user }}>
-      <section className={`${styles.container}`}>
-        <NLoading bgColor={bgColor as string} />
-      </section>
-    </Layout>
+    <section className={`${styles.container}`}>
+      <NLoading bgColor={bgColor as string} />
+    </section>
   );
 };
 

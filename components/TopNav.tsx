@@ -1,7 +1,9 @@
+'use client';
 import { memo, FC, useCallback, useRef, MouseEventHandler, MouseEvent } from 'react';
 import { Tnavigation, TPath } from '../constants';
 import styles from '../styles/TopNav.module.css';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 export type TTopNav = {
@@ -9,7 +11,7 @@ export type TTopNav = {
 };
 
 const TopNav: FC<TTopNav> = ({ navigation }) => {
-  const { pathname } = useRouter();
+  const pathname = usePathname();
   const navRef = useRef<HTMLUListElement>(null);
   const hamburgerRef = useRef<HTMLDivElement>(null);
   const onClick: MouseEventHandler<HTMLDivElement> = useCallback(
