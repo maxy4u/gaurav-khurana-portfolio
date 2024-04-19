@@ -1,4 +1,3 @@
-'use client';
 import { useQuery, useSuspenseQuery, UseQueryOptions, UseSuspenseQueryOptions } from '@tanstack/react-query';
 import { fetcher } from '../remote/fetcher';
 export type Maybe<T> = T | null;
@@ -34,7 +33,7 @@ export type Experience = {
   company?: Maybe<Scalars['String']['output']>;
   desc?: Maybe<Scalars['String']['output']>;
   end?: Maybe<Scalars['Date']['output']>;
-  id: Scalars['Int']['output'];
+  id?: Maybe<Scalars['Int']['output']>;
   published?: Maybe<Scalars['Boolean']['output']>;
   role?: Maybe<Array<Maybe<Roles>>>;
   skills?: Maybe<Scalars['String']['output']>;
@@ -53,8 +52,8 @@ export type Query = {
   getRepo: Repository;
   getRepos?: Maybe<Array<Maybe<Repository>>>;
   getResume?: Maybe<Resume>;
-  getUser: User;
-  getUserExperience: User;
+  getUser?: Maybe<User>;
+  getUserExperience?: Maybe<Array<Maybe<User>>>;
 };
 
 export type QueryGetRepoArgs = {
@@ -81,34 +80,33 @@ export type Repository = {
 
 export type Resume = {
   __typename?: 'Resume';
-  resume: Array<Experience>;
+  resume?: Maybe<Array<Maybe<Experience>>>;
 };
 
 export type Roles = {
   __typename?: 'Roles';
   content?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['Date']['output']>;
-  exp: Experience;
+  exp?: Maybe<Experience>;
   expid?: Maybe<Scalars['Int']['output']>;
-  id: Scalars['ID']['output'];
+  id?: Maybe<Scalars['ID']['output']>;
   updatedAt?: Maybe<Scalars['Date']['output']>;
 };
 
 export type User = {
   __typename?: 'User';
-  avatar_url?: Maybe<Scalars['String']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   exp?: Maybe<Array<Maybe<Experience>>>;
-  id: Scalars['ID']['output'];
-  login?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['ID']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   pwd?: Maybe<Scalars['String']['output']>;
-  url?: Maybe<Scalars['String']['output']>;
 };
+
+export type RoleFragment = { __typename?: 'Roles'; id?: string | null; expid?: number | null; content?: string | null };
 
 export type ExperienceFragment = {
   __typename?: 'Experience';
-  id: number;
+  id?: number | null;
   title?: string | null;
   company?: string | null;
   start?: any | null;
@@ -117,7 +115,12 @@ export type ExperienceFragment = {
   skills?: string | null;
   published?: boolean | null;
   authorId?: number | null;
-  role?: Array<{ __typename?: 'Roles'; id: string; expid?: number | null; content?: string | null } | null> | null;
+  role?: Array<{
+    __typename?: 'Roles';
+    id?: string | null;
+    expid?: number | null;
+    content?: string | null;
+  } | null> | null;
 };
 
 export type GetRepositoriesQueryVariables = Exact<{ [key: string]: never }>;
@@ -141,26 +144,29 @@ export type GetUserExperienceQueryVariables = Exact<{
 
 export type GetUserExperienceQuery = {
   __typename?: 'Query';
-  getUserExperience: {
+  getUserExperience?: Array<{
     __typename?: 'User';
-    id: string;
+    id?: string | null;
     email?: string | null;
     exp?: Array<{
       __typename?: 'Experience';
-      id: number;
+      id?: number | null;
       title?: string | null;
       company?: string | null;
       start?: any | null;
       end?: any | null;
       desc?: string | null;
-      skills?: string | null;
-      published?: boolean | null;
-      authorId?: number | null;
-      role?: Array<{ __typename?: 'Roles'; id: string; expid?: number | null; content?: string | null } | null> | null;
     } | null> | null;
-  };
+  } | null> | null;
 };
 
+export const RoleFragmentDoc = `
+    fragment role on Roles {
+  id
+  expid
+  content
+}
+    `;
 export const ExperienceFragmentDoc = `
     fragment experience on Experience {
   id
@@ -235,11 +241,16 @@ export const GetUserExperienceDocument = `
     id
     email
     exp {
-      ...experience
+      id
+      title
+      company
+      start
+      end
+      desc
     }
   }
 }
-    ${ExperienceFragmentDoc}`;
+    `;
 
 export const useGetUserExperienceQuery = <TData = GetUserExperienceQuery, TError = unknown>(
   variables?: GetUserExperienceQueryVariables,

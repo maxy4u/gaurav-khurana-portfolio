@@ -9,7 +9,6 @@ export default memo(function GitHub() {
   const user = process.env.NEXT_PUBLIC_USER;
   const [query, setQuery] = useState<string | null>(null);
   const { data, isLoading, error } = useGetRepositoriesQuery<GetRepositoriesQuery>();
-  debugger;
   const { getRepos: repositories } = data || { getRepos: [] };
 
   const onSearch = useCallback((value: string) => {

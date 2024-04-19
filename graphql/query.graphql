@@ -1,5 +1,11 @@
 scalar Date
 
+fragment role on Roles {
+  id
+  expid
+  content
+}
+
 fragment experience on Experience {
   id
   title
@@ -34,7 +40,12 @@ query GetUserExperience($email: String, $pwd: String) {
     id
     email
     exp {
-      ...experience
+      id
+      title
+      company
+      start
+      end
+      desc
     }
   }
 }

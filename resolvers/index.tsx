@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Repository } from '../utils';
 import { GraphQLScalarType } from 'graphql';
 import { Kind } from 'graphql/language';
+import prisma from 'lib/prisma';
 
 export const resolvers = {
   Date: new GraphQLScalarType({
@@ -24,7 +25,6 @@ export const resolvers = {
     getRepos: async () => {
       try {
         const { data } = await axios.get('https://api.github.com/users/maxy4u/repos?per_page=100');
-        debugger;
         return (data as Repository[]).map(({ id, name, owner, url, description }) => ({
           id,
           name,
@@ -61,13 +61,27 @@ export const resolvers = {
     getUser: async (_: unknown, { name }: { name: string }) => {
       try {
         const user = await axios.get(`https://api.github.com/users/${name}`);
-        debugger;
         return {
           id: user.data.id,
           login: user.data.login,
           avatar_url: user.data.avatar_url,
           url: user.data.url
         };
+      } catch (error) {
+        throw error;
+      }
+    },
+    getUserExperience: async (_: unknown, { email, pwd }: { email: string; pwd: string }) => {
+      try {
+        const result = await prisma.user.findMany({
+          where: { email: email, pwd: pwd },
+          select: {
+            name: true,
+            exp: true,
+            id: true
+          }
+        });
+        return result;
       } catch (error) {
         throw error;
       }

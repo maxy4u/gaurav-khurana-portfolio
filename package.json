@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "postbuild": "next-sitemap --config=sitemap.config.js",
     "start": "next start",
-    "start:debug": "NODE_OPTIONS='--inspect' next dev",
+    "dev:debug": "NODE_OPTIONS='--inspect' next dev",
     "start:prod": "next start -p  80",
     "lint": "eslint . --fix",
     "format": "prettier ./**/*.{js,ts,tsx,css,md,json} --config ./.prettierrc --write",
