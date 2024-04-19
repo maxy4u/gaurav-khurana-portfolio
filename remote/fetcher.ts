@@ -20,7 +20,6 @@ export const fetcher = <TData, TVariables>(query: string, variables?: TVariables
       next,
       cache
     });
-
     const json = await res.json();
 
     if (json.errors) {

@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { Repository } from '../../../utils';
+import { Repository } from '../utils';
 import { GraphQLScalarType } from 'graphql';
 import { Kind } from 'graphql/language';
+import prisma from 'lib/prisma';
 
 export const resolvers = {
   Date: new GraphQLScalarType({
@@ -66,6 +67,21 @@ export const resolvers = {
           avatar_url: user.data.avatar_url,
           url: user.data.url
         };
+      } catch (error) {
+        throw error;
+      }
+    },
+    getUserExperience: async (_: unknown, { email, pwd }: { email: string; pwd: string }) => {
+      try {
+        const result = await prisma.user.findMany({
+          where: { email: email, pwd: pwd },
+          select: {
+            name: true,
+            exp: true,
+            id: true
+          }
+        });
+        return result;
       } catch (error) {
         throw error;
       }

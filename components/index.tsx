@@ -1,15 +1,14 @@
-export type { TLayout } from './Layout';
 export type { TLoader } from './Loader';
+export type { TLogo } from './Logo';
 export type { THeader } from './Header';
 export type { TFooter } from './Footer';
 export type { SearchBoxProps } from './SearchBox';
 export type { Tswitch } from './Switch';
 export type { TCarousel } from './Carousel';
-export { default as Layout } from './Layout';
 export { default as Loader } from './Loader';
+export { default as Logo } from './Logo';
 export { default as Header } from './Header';
 export { default as Footer } from './Footer';
 export { default as SearchBox } from './SearchBox';
 export { default as Carousel } from './Carousel';
-export { default as ClientOnly } from './ClientOnly';
 export { default as Switch } from './Switch';

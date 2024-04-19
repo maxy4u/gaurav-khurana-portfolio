@@ -2,14 +2,7 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   // Where your GQL schema is located (could also be externally hosted)
-  //schema: 'pages/api/graphql.ts',
-  schema: [
-    {
-      'pages/api/graphql.ts': {
-        noRequire: true
-      }
-    }
-  ],
+  schema: './app/api/graphql/route.ts',
   overwrite: true,
   documents: 'graphql/**/*.graphql',
   generates: {

@@ -1,3 +1,4 @@
+'use client';
 import { TouchEvent, useState } from 'react';
 
 export interface SwipeInput {

@@ -4,6 +4,3 @@ Allow: /
 
 # Host
 Host: https://gauravkhurana.ca
-
-# Sitemaps
-Sitemap: https://gauravkhurana.ca/sitemap.xml

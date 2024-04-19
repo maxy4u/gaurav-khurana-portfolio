@@ -1,18 +1,34 @@
-import { memo, ChangeEventHandler, useMemo } from 'react';
+'use client';
+import { memo, useCallback, ChangeEvent } from 'react';
 import styles from '../styles/Switch.module.css';
-import { TState } from '../context';
+import { useAppContext } from '../context';
+import { ActionTypes } from '../constants';
+import { createCookie } from '../app/actions';
+import { useTransition } from 'react';
 
 export type Tswitch = {
   name: string;
   id: string;
   className?: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+
   disabled?: boolean;
-  theme: TState['theme'];
 };
 
-function Switch({ name, id, className, onChange, disabled = false, theme }: Tswitch): JSX.Element {
-  const checked = useMemo(() => theme === 'dark', [theme]);
+function Switch({ name, id, className, disabled = false }: Tswitch): JSX.Element {
+  const [, startTransition] = useTransition();
+  const {
+    state: { theme },
+    dispatch
+  } = useAppContext();
+  const onChange = useCallback(({ target: { checked } }: ChangeEvent<HTMLInputElement>) => {
+    const theme = checked ? 'dark' : 'light';
+    console.log('One change them called');
+    dispatch({ type: ActionTypes.CHANGE_THEME, theme });
+    startTransition(async () => {
+      await createCookie('theme', theme);
+    });
+  }, []);
+  const checked = theme === 'dark';
   return (
     <label htmlFor={id} className={`${className} ${styles.switch}`}>
       <input type='checkbox' name={name} id={id} onChange={onChange} disabled={disabled} checked={checked} />

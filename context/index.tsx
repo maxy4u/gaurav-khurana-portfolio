@@ -1,3 +1,4 @@
+'use client';
 import { createContext, Dispatch, ReactNode, useContext, useMemo, useReducer, memo, useEffect } from 'react';
 import { ActionTypes } from '../constants';
 
@@ -19,7 +20,7 @@ export interface TAppWrapper {
 }
 
 const initialState: TState = {
-  theme: 'dark'
+  theme: (process.env.NEXT_PUBLIC_THEME || 'dark') as TState['theme']
 };
 
 const AppContext = createContext({} as ContextState);

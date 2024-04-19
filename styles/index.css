@@ -16,7 +16,7 @@ a.yellow {
   max-width: 300px; */
 }
 
-.clientOnly {
+.fluid {
   overflow-x: hidden;
   display: flex;
   flex-wrap: wrap;
