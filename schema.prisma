@@ -9,13 +9,13 @@ generator client {
 }
 
 model Experience {
-  id        Int?     @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   title     String?
   company   String?
   start     DateTime?
   end       DateTime?
   desc      String?
-  role      Roles[]?
+  role      Roles[]
   skills    String?
   published Boolean? @default(false)
   author    User?   @relation(fields: [authorId], references: [id])
@@ -23,7 +23,7 @@ model Experience {
 }
 
 model Roles {
-    id      Int?     @id @default(autoincrement())
+    id      Int     @id @default(autoincrement())
     exp     Experience? @relation(fields: [expid], references: [id])
     expid   Int?
     content String?
@@ -36,5 +36,5 @@ model User {
   email String  @unique
   name  String
   pwd   String
-  exp   Experience[]?
+  exp   Experience[]
 }

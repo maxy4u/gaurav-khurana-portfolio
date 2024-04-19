@@ -58,11 +58,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en'>
       <body>
         <AppWrapper>
-          <section className={`${styles.layout} ${styles[theme as string]}`}>
-            <Header {...{ navigation }} />
-            <Providers>{children}</Providers>
-            <Footer />
-          </section>
+          <Providers>
+            <section className={`${styles.layout} ${styles[theme as string]}`}>
+              <Header {...{ navigation }} />
+              {children}
+              <Footer />
+            </section>
+          </Providers>
         </AppWrapper>
       </body>
     </html>

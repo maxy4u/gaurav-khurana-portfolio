@@ -3,7 +3,7 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { gql } from 'graphql-tag';
 import { NextRequest } from 'next/server';
 import { resolvers } from '../../../resolvers';
-import allowCors from '../../../utils/cors';
+// import allowCors from '../../../utils/cors';
 
 const typeDefs = gql(`
   scalar Date
@@ -65,7 +65,7 @@ const apolloServer = new ApolloServer({
 });
 
 const handler = startServerAndCreateNextHandler<NextRequest>(apolloServer);
-export default allowCors(handler);
+//export default allowCors(handler); use this only in dev when testing "http://localhost:3000/api/graphql"
 
 export async function GET(request: NextRequest) {
   return handler(request);
