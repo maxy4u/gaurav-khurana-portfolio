@@ -10,8 +10,16 @@ type RequestInit = {
 export const fetcher = <TData, TVariables>(query: string, variables?: TVariables, options?: RequestInit['headers']) => {
   return async (): Promise<TData> => {
     const { next, cache, ...restOptions } = options || {};
-    const url = process.env.NODE_ENV === 'development' ? process.env.DEV_HOST_URL : process.env.PROD_HOST_URL;
+    const environment = process.env.NODE_ENV || 'development';
+    const url =
+      environment == 'development' ? process.env.NEXT_PUBLIC_DEV_HOST_URL : process.env.NEXT_PUBLIC_PROD_HOST_URL;
     console.log('*Fetching*', url);
+    console.log(
+      '*HOST*',
+      process.env.NODE_ENV,
+      process.env.NEXT_PUBLIC_DEV_HOST_URL,
+      process.env.NEXT_PUBLIC_PROD_HOST_URL
+    );
     const res = await fetch(`${url}/api/graphql`, {
       method: 'POST',
       headers: {

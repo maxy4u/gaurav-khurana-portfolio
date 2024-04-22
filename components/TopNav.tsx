@@ -37,9 +37,12 @@ const TopNav: FC<TTopNav> = ({ navigation }) => {
         {Object.keys(navigation).map((key, ind) => (
           <li
             key={`nav-item-${ind}`}
-            className={`${(pathname === navigation[key as keyof typeof navigation]['path'] && styles['active']) || ''}`}
-          >
-            <Link href={navigation[key as keyof typeof navigation].path}>
+            className={`${
+              (pathname === navigation[key as keyof typeof navigation]['path'] && styles['active']) || ''
+            }`}>
+            <Link
+              href={navigation[key as keyof typeof navigation].path}
+              onClick={() => hamburgerRef?.current?.classList.remove('open')}>
               {navigation[key as keyof typeof navigation].label}
             </Link>
           </li>
