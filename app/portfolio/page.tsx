@@ -1,22 +1,27 @@
 import fs from 'node:fs/promises';
-import { globSync } from 'glob';
+import path from 'node:path';
 import Image from 'next/image';
 import stylesHome from '../Home.module.css';
 import { getPlaiceholder } from 'plaiceholder';
 
-const getImages = async (pattern: string) =>
-  Promise.all(
-    globSync(pattern).map(async (file) => {
-      const src = file.replace(/public/, '');
-      const buffer = await fs.readFile(file);
+const getImages = async () => {
+  const imageDirectory = path.join(process.cwd(), 'public/images/portfolio');
+  const filenames = await fs.readdir(imageDirectory);
+
+  return Promise.all(
+    filenames.map(async (file) => {
+      const src = '/images/portfolio/' + file;
+      const filePath = path.join(imageDirectory, file);
+      const buffer = await fs.readFile(filePath);
 
       const plaiceholder = await getPlaiceholder(buffer);
       return { ...plaiceholder, img: { src } };
     })
   );
+};
 
 export default async function Portfolio() {
-  const images = await getImages('/public/images/portfolio/*.{jpg,png}');
+  const images = await getImages();
 
   return (
     <section className={` ${stylesHome.container}`}>
