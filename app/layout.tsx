@@ -60,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AppWrapper>
           <Providers>
             <section className={`${styles.layout} ${styles[theme as string]}`}>
-              <Header {...{ navigation }} />
+              <Header navigation={navigation} />
               {children}
               <Footer />
             </section>

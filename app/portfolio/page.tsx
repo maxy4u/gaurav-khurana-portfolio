@@ -7,7 +7,7 @@ import { getPlaiceholder } from 'plaiceholder';
 const getImages = async (pattern: string) =>
   Promise.all(
     globSync(pattern).map(async (file) => {
-      const src = file.replace(/\.*public/, '');
+      const src = file.replace(/public/, '');
       const buffer = await fs.readFile(file);
 
       const plaiceholder = await getPlaiceholder(buffer);
@@ -16,7 +16,7 @@ const getImages = async (pattern: string) =>
   );
 
 export default async function Portfolio() {
-  const images = await getImages('./public/images/portfolio/*.{jpg,png}');
+  const images = await getImages('/public/images/portfolio/*.{jpg,png}');
 
   return (
     <section className={` ${stylesHome.container}`}>
