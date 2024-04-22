@@ -14,7 +14,7 @@ export default async function Resume() {
     });
     const { getUserExperience } = data;
     const [{ exp }]: [User] = getUserExperience as [User];
-    experience = exp;
+    experience = exp || [];
   } catch (e) {
     console.log(e);
   }
