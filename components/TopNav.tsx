@@ -31,18 +31,19 @@ const TopNav: FC<TTopNav> = ({ navigation }) => {
     [navRef, hamburgerRef]
   );
 
+  const postNav = () => {
+    if (hamburgerRef?.current?.click) hamburgerRef?.current?.click();
+  };
+
   return (
     <nav className={styles.navCont}>
       <ul className={styles.navigation} ref={navRef}>
         {Object.keys(navigation).map((key, ind) => (
           <li
             key={`nav-item-${ind}`}
-            className={`${
-              (pathname === navigation[key as keyof typeof navigation]['path'] && styles['active']) || ''
-            }`}>
-            <Link
-              href={navigation[key as keyof typeof navigation].path}
-              onClick={() => hamburgerRef?.current?.classList.remove('open')}>
+            className={`${(pathname === navigation[key as keyof typeof navigation]['path'] && styles['active']) || ''}`}
+          >
+            <Link href={navigation[key as keyof typeof navigation].path} onClick={postNav}>
               {navigation[key as keyof typeof navigation].label}
             </Link>
           </li>

@@ -21,6 +21,7 @@ export default async function Resume() {
 
   return (
     <div className={styles.container}>
+      <h1>Work in progress, Stay tuned Usin ORM , Prisma , Postgres, Graphql to populate this section!</h1>
       {(experience as Experience[]).map(({ title, id }) => {
         return (
           <ul key={id}>
