@@ -9,8 +9,11 @@ import { navigation } from '../constants';
 import styles from '../styles/Layout.module.css';
 import { cookies } from 'next/headers';
 
+const host =
+  process.env.NODE_ENV == 'development' ? process.env.NEXT_PUBLIC_DEV_HOST_URL : process.env.NEXT_PUBLIC_PROD_HOST_URL;
+
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL(host as string),
   title: 'Gaurav Khurana Actor & Software Developer portfolio',
   description: 'Gaurav Khurana Actor UI Developer, UI Architect, AS400 Developer, Fullstack Developer,  portfolio',
   robots: {
