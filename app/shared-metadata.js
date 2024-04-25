@@ -1,7 +1,7 @@
 export const openGraphImage = {
   images: [
     {
-      url: `/images/gauravkhurana-thumbnail.jpg`,
+      url: `/images/gauravkhurana-thumbnail.png`,
       width: 800,
       height: 600,
       alt: 'Gaurav Khurana'
